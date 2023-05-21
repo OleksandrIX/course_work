@@ -1,0 +1,99 @@
+.table{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom-table {
+    margin: 0 20px;
+    display: block;
+    background: rgb(49, 166, 70);
+    max-height: 500px;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.users-table{
+    max-width: 800px;
+}
+
+.companies-table{
+    max-width: 800px;
+}
+
+.ttx-table{
+    height: 420px;
+}
+
+.custom-table::-webkit-scrollbar{
+    width: 10px;
+    border: 0;
+}
+
+.custom-table::-webkit-scrollbar-thumb{
+    background: rgba(14, 91, 18, 0.81);
+    border-radius: 10px;
+}
+
+.custom-table::-webkit-scrollbar-track{
+    background: rgba(38, 208, 49, 0.61);
+    border-radius: 10px;
+}
+
+#weapons-table .table-head-item:nth-child(1), #servicemans-table .table-head-item:nth-child(1){
+    width: 50px;
+}
+
+.table-head-item {
+    max-width: 500px;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    background-color: rgba(38, 106, 208, 0.38);
+    color: white;
+    padding: 30px;
+    font-size: 1.3rem;
+}
+
+.table-body-item {
+    background: rgba(50, 206, 182, 0.39);
+    color: white;
+    padding: 25px;
+    font-size: 1.3rem;
+    border: 1px solid rgba(156, 222, 169, 0.6);
+}
+
+.table-body-item:nth-child(2){
+    text-align: center;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.action{
+    border: 0;
+    border-radius: 30%;
+    background: rgba(0, 128, 0, 0);
+    cursor: pointer;
+    padding: 3px;
+}
+
+.action:hover{
+    background: rgb(49, 166, 70, 0.3);
+}
+
+#servicemans-table{
+    display: none;
+}
+
+.table-row{
+    cursor: pointer;
+}
+
+.table-row:hover{
+    background: rgba(52, 134, 68, 0.7);
+}

@@ -1,0 +1,22 @@
+<form id="company-add" class="custom-form"
+      onsubmit="return validateCompanyForm(<%= JSON.stringify(actionData.companies) %>)">
+    <div class="input-block">
+        <label for="name_company">Назва роти:</label>
+        <input id="name_company" name="name_company" type="text"
+               required maxlength="20" minlength="2"
+               autofocus
+               placeholder="username...">
+    </div>
+
+    <div class="input-block">
+        <label for="user">Користувач:</label>
+        <select id="user" name="user_id" required>
+            <% actionData.users.forEach((user)=>{ %>
+                <option value="<%= user.id_user %>"><%= user.username %></option>
+            <% }) %>
+        </select>
+    </div>
+    <div class="input-block">
+        <input class="btn" type="submit" value="Додати">
+    </div>
+</form>

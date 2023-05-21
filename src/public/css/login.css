@@ -1,0 +1,73 @@
+body {
+    background: rgba(25, 108, 47, 0.7);
+}
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-name {
+    position: relative;
+    top: 0;
+    text-align: center;
+    font-size: 2.4rem;
+    color: white;
+}
+
+.error-message{
+    text-align: center;
+    color: crimson;
+    font-size: 1.6rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    height: 400px;
+    width: 450px;
+    background: rgba(185, 165, 83, 0.9);
+    border: 3px solid rgba(168, 168, 168, 0.7);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px,
+    rgba(0, 0, 0, 0.12) 0 -12px 30px,
+    rgba(0, 0, 0, 0.12) 0 4px 6px,
+    rgba(0, 0, 0, 0.17) 0 12px 13px,
+    rgba(0, 0, 0, 0.09) 0 -3px 5px;
+}
+
+.input-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    font-size: 2rem;
+    color: white;
+}
+
+.input-div > input {
+    height: 2rem;
+    width: 300px;
+}
+
+.login-button {
+    background: rgb(52, 100, 7);
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    height: 50px;
+    width: 110px;
+    margin-left: 264px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.login-button:hover{
+    background: rgb(52, 100, 7, 0.8);
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/table.css">
+    <link rel="stylesheet" href="/public/css/form.css">
+    <title>Облік озброєння роти</title>
+</head>
+<body>
+<div class="user-page">
+    <div class="site">
+        <div class="sidebar">
+            <h1 class="sidebar-name">Роти</h1>
+            <ul class="navbar">
+                <% actionData.companies.forEach((company)=>{ %>
+                    <li class="navbar-item fz-2rem"
+                        onclick="openCompany(<%= company.id_company %>)"><%= company.name_company %></li>
+                <% }) %>
+            </ul>
+
+            <form action="/logout" method="post">
+                <button class="button-logout" type="submit" value="Вийти">
+                    <img class="image" src="/public/img/exit.png" alt="Вийти">
+                    Вийти
+                </button>
+            </form>
+        </div>
+        <div class="main">
+            <% if(!actionData.status){ %>
+                <div class="banner">
+                    <div class="text">
+                        <p>Виберіть роту</p>
+                    </div>
+                </div>
+            <% }else{ %>
+                <% if(actionData.action === "companies"){ %>
+                    <div class="weapons-servicemans">
+                        <h1 class="name-company"><%= actionData.company.name_company %></h1>
+                        <ul>
+                            <li id="weapon-btn">Озброєння</li>
+                            <li id="serviceman-btn">Військовослужбовці</li>
+                        </ul>
+                    </div>
+                    <div class="table">
+                        <%- include("../components/home/table/tableWeapon.ejs", actionData) %>
+                        <%- include("../components/home/table/tableServiceman.ejs", actionData) %>
+
+                        <div class="btn-group">
+                            <button class="btn btn-p"
+                                    onclick="redirectToAddWeaponPage('<%= JSON.stringify(actionData.company.id_company) %>')">
+                                Додати озброєння
+                            </button>
+                            <button class="btn btn-p"
+                                    onclick="redirectToAddServicemanPage('<%= JSON.stringify(actionData.company.id_company) %>')">
+                                Додати в/с
+                            </button>
+                        </div>
+                    </div>
+                <% } else if(actionData.action === "add-weapon"){ %>
+                    <div class="form">
+                        <%- include("../components/home/add/addWeapon.ejs", actionData) %>
+                    </div>
+                <% } else if(actionData.action === "add-serviceman"){ %>
+                    <div class="form">
+                        <%- include("../components/home/add/addServiceman.ejs", actionData) %>
+                    </div>
+                <% } else if(actionData.action === "weapon"){ %>
+                    <div class="weapon-page">
+                        <%- include("../components/home/show/showWeapon.ejs", actionData) %>
+                    </div>
+                <% } else if(actionData.action === "serviceman"){ %>
+                    <div class="form">
+                        <%- include("../components/home/show/showServiceman.ejs", actionData) %>
+                    </div>
+                <% }else if(actionData.action === "edit-weapon"){ %>
+                    <%- include("../components/home/edit/editWeapon.ejs", actionData) %>
+                <% }else if(actionData.action === "edit-serviceman"){ %>
+                    <div class="form">
+                    <%- include("../components/home/edit/editServiceman.ejs", actionData) %>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+</div>
+<script src="/public/js/home.js"></script>
+</body>
+</html>

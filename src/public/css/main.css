@@ -1,0 +1,233 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+.admin-page{
+    min-height: 100vh;
+}
+
+.user-page{
+    min-height: 100vh;
+}
+
+.site{
+    display: flex;
+    align-items: stretch;
+    height: 100vh;
+}
+
+.sidebar{
+    flex: 1;
+    background: rgba(46, 138, 127, 0.7);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-name{
+    color: white;
+    text-align: center;
+    margin: 10px;
+}
+
+.navbar{
+    text-decoration: none;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.navbar::-webkit-scrollbar{
+    width: 10px;
+    border: 0;
+}
+
+.navbar::-webkit-scrollbar-thumb{
+    background: rgba(6, 201, 27, 0.6);
+    border-radius: 10px;
+}
+
+.navbar::-webkit-scrollbar-track{
+    background: rgba(46, 138, 127, 0.7);
+    border-radius: 10px;
+}
+
+.navbar-item{
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.fz-2rem{
+    font-size: 2rem;
+}
+
+.navbar-item:hover{
+    background: rgba(46, 138, 127, 0.5);
+}
+
+.image{
+    width: 50px;
+    height: 50px;
+}
+
+.button-logout{
+    position: absolute;
+    left: 80px;
+    bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    border: 0;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: white;
+    background: rgba(46, 138, 127, 0);
+}
+
+.button-logout:hover{
+    background: rgba(46, 138, 127, 0.5);
+}
+
+.button-logout > img{
+    height: 40px;
+    width: 40px;
+}
+
+.main{
+    flex: 4;
+    background: rgba(156, 222, 169, 0.6);
+}
+
+.banner{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner > .text{
+    width: fit-content;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: rgba(23, 21, 19, 0.75);
+    border: 1px solid rgb(141, 141, 141);
+}
+
+.name-company{
+    position: absolute;
+    top: 0;
+    left: 40px;
+    text-align: center;
+    color: rgba(255, 255, 255);
+    margin-top: 10px;
+    cursor: default;
+}
+
+.name-company::after{
+    content: "";
+    display: block;
+    margin-top: 2px;
+    height: 4px;
+    width: 105%;
+    border-radius: 10px;
+    background: #6cb648;
+}
+
+.weapons-servicemans{
+    position: relative;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.weapons-servicemans > ul{
+    margin-top: 10px;
+    background: rgba(103, 204, 12, 0.8);
+    padding: 10px;
+    border-radius: 14px;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.weapons-servicemans > ul > li{
+    position: relative;
+    cursor: pointer;
+}
+
+.weapons-servicemans > ul > li::after{
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    display: block;
+    margin-top: 2px;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: #ffffff;
+    transform: scaleX(0);
+    transition: all .25s ease;
+}
+
+.weapons-servicemans > ul > li:hover::after{
+    transform: scaleX(1);
+}
+
+.weapon-page{
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.weapon-page{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+}
+
+.weapon-page::-webkit-scrollbar{
+    width: 10px;
+    border: 0;
+}
+
+.weapon-page::-webkit-scrollbar-thumb{
+    background: rgba(6, 201, 27, 0.6);
+}
+
+.weapon-page::-webkit-scrollbar-track{
+    background: rgba(46, 138, 127, 0.7);
+}
+
+.weapon-page > #weapon-ttx > .table > h1{
+    color: white;
+    margin-bottom: 5px;
+}
+
+#weapon-maintenance{
+    max-width: 100vw;
+}
+
+.weapon-page > #weapon-maintenance{
+    grid-column: 1 / span 2;
+}

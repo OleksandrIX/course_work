@@ -1,0 +1,26 @@
+<table id="servicemans-table" class="custom-table">
+    <thead class="table-head">
+    <tr>
+        <th class="table-head-item">№</th>
+        <th class="table-head-item">Військове звання</th>
+        <th class="table-head-item">ПІБ</th>
+        <th class="table-head-item">посада</th>
+    </tr>
+    </thead>
+    <tbody class="table-body">
+    <% actionData.servicemans.forEach((serviceman, index) => { %>
+        <tr class="table-row"
+            onclick="openServiceman('<%= actionData.company.id_company %>','<%= serviceman.id_serviceman %>')">
+            <td class="table-body-item"><%= (index + 1) %></td>
+            <td class="table-body-item"><%= serviceman.military_rank %></td>
+            <td class="table-body-item">
+                <%= serviceman.last_name %>
+                <%= serviceman.first_name[0].toUpperCase() %>
+                .<%= serviceman.middle_name[0].toUpperCase() %>.
+            </td>
+            <td class="table-body-item"><%= serviceman.position %></td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+

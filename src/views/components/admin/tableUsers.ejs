@@ -1,0 +1,27 @@
+<table class="custom-table users-table">
+    <thead class="table-head">
+    <tr class="table-row">
+        <th class="table-head-item">Ім'я користувача</th>
+        <th class="table-head-item">Роль</th>
+        <th class="table-head-item">Дії</th>
+    </tr>
+    </thead>
+    <tbody class="table-body">
+    <% actionData.users.forEach((user) => { %>
+        <tr class="table-row">
+            <td class="table-body-item"><%= user.username %></td>
+            <td class="table-body-item"><%= user.role %></td>
+            <td class="table-body-item">
+                <div class="actions">
+                    <button class="action edit" onclick="redirectToEditUserPage('<%= user.id_user %>')">
+                        <%- include("../actions/edit.ejs") %></button>
+                    <button class="action delete" onclick="removeUser('<%= user.id_user %>')">
+                        <%- include("../actions/delete.ejs") %></button>
+                </div>
+            </td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+
+<button class="btn btn-p btn-mt" onclick="redirectToAddUserPage()">Додати користувача</button>

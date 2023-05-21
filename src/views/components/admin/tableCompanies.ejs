@@ -1,0 +1,27 @@
+<table class="custom-table companies-table">
+    <thead class="table-head">
+    <tr class="table-row">
+        <th class="table-head-item">Назва роти</th>
+        <th class="table-head-item">Відповідальна особа</th>
+        <th class="table-head-item">Дії</th>
+    </tr>
+    </thead>
+    <tbody class="table-body">
+    <% actionData.companies.forEach((company) => { %>
+        <tr class="table-row">
+            <td class="table-body-item"><%= company.company.name_company %></td>
+            <td class="table-body-item"><%= company.user %></td>
+            <td class="table-body-item">
+                <div class="actions">
+                    <button class="action edit" onclick="redirectToEditCompanyPage('<%= company.company.id_company %>')">
+                        <%- include("../actions/edit.ejs") %></button>
+                    <button class="action delete" onclick="removeCompany('<%= company.company.id_company %>')">
+                        <%- include("../actions/delete.ejs") %></button>
+                </div>
+            </td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+
+<button class="btn btn-p btn-mt" onclick="redirectToAddCompanyPage()">Додати роту</button>

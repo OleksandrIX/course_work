@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/login.css">
+    <title>Login</title>
+</head>
+<body>
+<div class="login-page">
+    <form class="login-form" action="/login" method="post">
+        <h1 class="page-name">Aвторизації</h1>
+
+        <h3 class="error-message">
+            <% if(messages.error){ %>
+                <%= messages.error %>
+            <% } %>
+        </h3>
+        <div class="input-div">
+            <label for="username">Ім'я користувача:</label>
+            <input id="username" name="username" type="text"
+                   required maxlength="16"
+                   autofocus
+                   placeholder="username...">
+        </div>
+
+        <div class="input-div">
+            <label for="password">Пароль:</label>
+            <input id="password" name="password" type="password"
+                   required
+                   placeholder="********">
+        </div>
+
+        <input class="login-button" type="submit" value="Увійти">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgb(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    position: relative;
+    background: rgba(49, 234, 183, 0.9);
+    border: 3px solid rgba(168, 168, 168, 0.7);
+    border-radius: 10px;
+}
+
+.add-ttx-modal{
+    margin: 10% auto;
+    width: 40%;
+    height: 30%;
+}
+
+.edit-ttx-modal{
+    margin: 10% auto;
+    width: 40%;
+    height: 30%;
+}
+
+.show-ttx-modal{
+    margin: 5% auto;
+    width: 45%;
+    min-height: 30%;
+    max-height: 70%;
+    overflow-y: auto;
+}
+
+.show-ttx-modal::-webkit-scrollbar{
+    width: 10px;
+    border: 0;
+}
+
+.show-ttx-modal::-webkit-scrollbar-thumb{
+    background: rgba(23, 140, 29, 0.81);
+    border-radius: 10px;
+}
+
+.show-ttx-modal::-webkit-scrollbar-track{
+    background: rgba(106, 236, 115, 0.61);
+    border-radius: 10px;
+}
+
+.modal-name{
+    position: sticky;
+    top: 0;
+}
+
+.close {
+    z-index: 1;
+    position: absolute;
+    right: 10px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.modal-content > p {
+    margin: 10px 0;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.modal-content > form {
+    margin-top: 35px;
+    margin-left: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+}
+
+.modal-input{
+    color: white;
+}
+
+.modal-input > label{
+    font-size: 1.2rem;
+}
+
+.modal-input > input{
+    height: 30px;
+}
+
+.modal-input > select{
+    height: 30px;
+    width: 150px;
+}
+
+.modal-btn-div{
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 25px;
+}
+
+.modal-btn{
+    background: rgb(52, 100, 7);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    height: 40px;
+    width: 110px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modal-btn:hover{
+    background: rgb(52, 100, 7, 0.8);
+}
+
+.ttx{
+    padding: 10px;
+}

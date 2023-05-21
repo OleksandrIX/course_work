@@ -1,0 +1,21 @@
+<form id="user-add" class="custom-form"
+      onsubmit="return validateUserForm(<%= JSON.stringify(actionData.users) %>)">
+    <div class="input-block">
+        <label for="username">Ім'я користувача:</label>
+        <input id="username" name="username" type="text"
+               required maxlength="16"
+               autofocus
+               placeholder="username...">
+    </div>
+
+    <div class="input-block">
+        <label for="password">Пароль:</label>
+        <input id="password" name="password" type="password"
+               required
+               placeholder="********">
+    </div>
+
+    <div class="input-block">
+        <input class="btn" type="submit" value="Додати">
+    </div>
+</form>

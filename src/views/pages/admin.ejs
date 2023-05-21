@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/table.css">
+    <link rel="stylesheet" href="/public/css/form.css">
+    <title>Сторінка адміністратора</title>
+</head>
+<body>
+<div class="admin-page">
+    <div class="site">
+        <div class="sidebar">
+            <ul class="navbar">
+                <li class="navbar-item" onclick="actionsWithUsers()">
+                    <img class="image" src="/public/img/user.png" alt="Користувачі">
+                    <h3>Користувачі</h3>
+                </li>
+                <li class="navbar-item" onclick="actionsWithCompanies()">
+                    <img class="image" src="/public/img/company.png" alt="Роти">
+                    <h3>Роти</h3>
+                </li>
+            </ul>
+
+            <form action="/logout" method="post">
+                <button class="button-logout" type="submit" value="Вийти">
+                    <img class="image" src="/public/img/exit.png" alt="Вийти">
+                    Вийти
+                </button>
+            </form>
+        </div>
+        <div class="main">
+            <% if(!actionData.status){ %>
+                <div class="banner">
+                    <div class="text">
+                        <p>Це панель адміністратора</p>
+                    </div>
+                </div>
+            <% }else{ %>
+                <% if(actionData.type === "user"){ %>
+                    <% if(actionData.action === "users"){ %>
+                        <div class="table">
+                            <%- include("../components/admin/tableUsers.ejs", actionData) %>
+                        </div>
+                    <% }else if(actionData.action === "add-user"){ %>
+                        <div class="form">
+                            <%- include("../components/admin/addUser.ejs", actionData) %>
+                        </div>
+                    <% } else if(actionData.action === "edit-user"){ %>
+                        <div class="form">
+                            <%- include("../components/admin/editUser.ejs", actionData) %>
+                        </div>
+                    <% } %>
+                <% } else if(actionData.type === "company"){ %>
+                    <% if(actionData.action === "companies"){ %>
+                        <div class="table">
+                            <%- include("../components/admin/tableCompanies.ejs", actionData) %>
+                        </div>
+                    <% } else if(actionData.action === "add-company"){ %>
+                        <div class="form">
+                            <%- include("../components/admin/addCompany.ejs", actionData) %>
+                        </div>
+                    <% } else if(actionData.action === "edit-company"){ %>
+                            <div class="form">
+                                <%- include("../components/admin/editCompany.ejs", actionData) %>
+                            </div>
+                    <% } %>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+</div>
+<script src="/public/js/admin.js"></script>
+</body>
+</html>

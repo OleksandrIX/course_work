@@ -1,0 +1,30 @@
+<form id="company-edit" class="custom-form">
+    <input type="hidden" name="id_company" value="<%= actionData.company.id_company %>">
+
+    <div class="input-block">
+        <label for="name_company">Назва роти:</label>
+        <input id="name_company" name="name_company" type="text"
+               value="<%= actionData.company.name_company %>"
+               required maxlength="16"
+               autofocus
+               placeholder="username...">
+    </div>
+
+    <div class="input-block">
+        <label for="user">Користувач:</label>
+
+        <select id="user" name="user_id" required>
+            <% actionData.users.forEach((user)=>{ %>
+                <option value="<%= user.id_user %>"
+                <% if(actionData.company.user_id === user.id_user){ %>
+                        selected
+                        <% } %>
+                ><%= user.username %></option>
+            <% }) %>
+        </select>
+    </div>
+
+    <div class="input-block">
+        <input class="btn" type="submit" value="Редагувати">
+    </div>
+</form>

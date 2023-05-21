@@ -1,0 +1,55 @@
+<div id="edit-ttx" class="modal">
+    <div class="modal-content edit-ttx-modal">
+        <p class="modal-name">Редагувати тактико-технічні характеристики</p>
+
+        <form id="form-edit-ttx">
+            <div class="modal-input">
+                <label for="property">Властивість:</label>
+                <input id="property"
+                       name="property"
+                       type="text"
+                       required autofocus
+                       placeholder="Вага">
+            </div>
+            <div class="modal-input">
+                <label for="value">Значення:</label>
+                <input id="value"
+                       name="value"
+                       type="text"
+                       required
+                       placeholder="12346">
+            </div>
+            <div class="modal-input">
+                <label for="unit_measure">Одиниця виміру:</label>
+                <select id="unit_measure"
+                        name="unit_measure"
+                        required>
+                    <optgroup label="---------------">
+                        <option value="мм">мм</option>
+                        <option value="см">см</option>
+                        <option value="м">м</option>
+                        <option value="км">км</option>
+                    </optgroup>
+                    <optgroup label="---------------">
+                        <option value="г">г</option>
+                        <option value="кг">кг</option>
+                        <option value="т">т</option>
+                    </optgroup>
+                    <optgroup label="---------------">
+                        <option value="м/с">м/с</option>
+                        <option value="км/год">км/год</option>
+                        <option value="пострілів/хв">пострілів/хв</option>
+                    </optgroup>
+                    <optgroup label="---------------">
+                        <option value="шт">шт</option>
+                        <option value="патронів">патронів</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="modal-btn-div">
+                <input id="btn-edit-ttx" class="modal-btn" type="submit" value="Редагувати">
+            </div>
+        </form>
+    </div>
+</div>

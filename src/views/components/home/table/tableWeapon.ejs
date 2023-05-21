@@ -1,0 +1,26 @@
+<table id="weapons-table" class="custom-table">
+    <thead class="table-head">
+    <tr>
+        <th class="table-head-item">№</th>
+        <th class="table-head-item">Військове звання</th>
+        <th class="table-head-item">ПІБ</th>
+        <th class="table-head-item">Назва озброєння</th>
+        <th class="table-head-item">Серійний номер</th>
+    </tr>
+    </thead>
+    <tbody class="table-body">
+    <% actionData.weapons.forEach((weapon, index) => { %>
+        <tr class="table-row" onclick="openWeapon('<%= actionData.company.id_company %>','<%= weapon.weapon.id_weapon %>')">
+            <td class="table-body-item"><%= (index + 1) %></td>
+            <td class="table-body-item"><%= weapon.serviceman.military_rank %></td>
+            <td class="table-body-item">
+                <%= weapon.serviceman.last_name %>
+                <%= weapon.serviceman.first_name[0].toUpperCase() %>
+                .<%= weapon.serviceman.middle_name[0].toUpperCase() %>.
+            </td>
+            <td class="table-body-item"><%= weapon.weapon.name_weapon %></td>
+            <td class="table-body-item"><%= weapon.weapon.serial_number %></td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>

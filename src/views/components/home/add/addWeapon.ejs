@@ -1,0 +1,58 @@
+<form id="weapon-add" class="custom-form">
+    <div class="input-block">
+        <label for="name_weapon">Назва озброєння:</label>
+        <input id="name_weapon" name="name_weapon" type="text"
+               required maxlength="20"
+               autofocus
+               placeholder="АК-74">
+    </div>
+
+    <div class="input-block">
+        <label for="serial_number">Серійний номер:</label>
+        <input id="serial_number" name="serial_number" type="number"
+               required min="10000" max="1000000000"
+               placeholder="00000000">
+    </div>
+
+    <div class="input-block">
+        <label for="date_manufacture">Дата виробництва:</label>
+        <input id="date_manufacture" name="date_manufacture" type="text"
+               required minlength="10" maxlength="10"
+               placeholder="ДД-ММ-РРРР">
+    </div>
+
+    <div class="input-block">
+        <label for="serviceman">Військовослужбовець:</label>
+        <% if (actionData.servicemans.length === 0){ %>
+            <select id="serviceman" name="serviceman_id" required>
+                <option value="">В/с немає</option>
+            </select>
+        <% } else{ %>
+            <select id="serviceman" name="serviceman_id" required>
+                <% actionData.servicemans.forEach((serviceman)=>{ %>
+                    <option value="<%= serviceman.id_serviceman %>">
+                        <%= serviceman.military_rank %>
+                        <%= serviceman.last_name %> <%= serviceman.first_name[0].toUpperCase() %>
+                        .<%= serviceman.middle_name[0].toUpperCase() %>.
+                    </option>
+                <% }) %>
+            </select>
+        <% } %>
+    </div>
+
+    <div class="input-block">
+        <label>Тактико-технічні характеристики:</label>
+        <button id="open-show-modal" name="ttx" class="btn show-ttx">Переглянути ТТХ</button>
+        <button id="open-add-modal" class="btn add-ttx">Додати ТТХ</button>
+    </div>
+
+    <div class="input-block">
+        <input class="btn" type="submit" value="Додати">
+    </div>
+</form>
+
+<link rel="stylesheet" href="/public/css/modal.css">
+<%- include("./addTTX.ejs") %>
+<%- include("../edit/editTTX.ejs") %>
+<%- include("../show/showTTX.ejs") %>
+<script src="/public/js/ttxModal.js"></script>

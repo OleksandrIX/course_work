@@ -1,0 +1,16 @@
+<form id="user-edit" class="custom-form">
+    <input type="hidden" name="id_user" value="<%= actionData.user.id_user %>">
+
+    <div class="input-block">
+        <label for="username">Ім'я користувача:</label>
+        <input id="username" name="username" type="text"
+               value="<%= actionData.user.username %>"
+               required maxlength="16"
+               autofocus
+               placeholder="username...">
+    </div>
+
+    <div class="input-block">
+        <input class="btn" type="submit" value="Редагувати">
+    </div>
+</form>
