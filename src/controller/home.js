@@ -7,11 +7,16 @@ const getAllCompanyFromUser = async (req, res, next) => {
     res.render("pages/home", {actionData});
 };
 
-const getActionData = async ({action, companyId, weaponId, servicemanId}, userId, next) => {
+const getActionData = async ({action, companyId, weaponId, servicemanId, maintenanceId}, userId, next) => {
     const data = {};
-    let company = {};
     let resultWeapons = [];
     let resultServicemans = [];
+    let weaponsData;
+    let servicemansData;
+    let company = companyId ? await (await fetch(`${api.uri}/companies/${companyId}`)).json() : {};
+
+    if (company.status === 404) return next();
+    if (company.status === 200) company = company.company;
 
     switch (action) {
         case undefined:
@@ -19,11 +24,6 @@ const getActionData = async ({action, companyId, weaponId, servicemanId}, userId
             break;
 
         case "companies":
-            company = await (await fetch(`${api.uri}/companies/${companyId}`)).json();
-
-            if(company.status === 404) return next();
-            if(company.status === 200) company = company.company;
-
             let servicemans =
                 (await (await fetch(`${api.uri}/companies/${companyId}/servicemans`)).json()).servicemans || [];
 
@@ -51,46 +51,41 @@ const getActionData = async ({action, companyId, weaponId, servicemanId}, userId
 
             data.status = true;
             data.action = action;
-            data.company = company;
             data.weapons = resultWeapons;
             data.servicemans = servicemans;
             break;
 
         case "weapon":
-            company = await (await fetch(`${api.uri}/companies/${companyId}`)).json();
+            data.weapon = await (await fetch(`${api.uri}/weapons/${weaponId}`)).json();
+            data.serviceman = await (await fetch(`${api.uri}/servicemans/${data.weapon.weapon.serviceman_id}`)).json();
+            data.maintenances = await (await fetch(`${api.uri}/weapons/${weaponId}/maintenances`)).json();
 
-            if(company.status === 404) return next();
-            if(company.status === 200) company = company.company;
+            if (data.weapon.status === 404 || data.serviceman.status === 404 || data.maintenances.status === 404) return next();
+            if (data.weapon.status === 200 && data.serviceman.status === 200 && data.maintenances.status === 200) {
+                data.weapon = data.weapon.weapon;
+                data.serviceman = data.serviceman.serviceman;
+                data.maintenances = data.maintenances.maintenances;
+            }
 
             data.status = true;
             data.action = action;
-            data.company = company;
-            data.weapon = (await (await fetch(`${api.uri}/weapons/${weaponId}`)).json()).weapon || {};
-            data.serviceman = (await (await fetch(`${api.uri}/servicemans/${data.weapon.serviceman_id}`)).json()).serviceman || {};
-            data.maintenances = (await (await fetch(`${api.uri}/weapons/${weaponId}/maintenances`)).json()).maintenances || [];
             break;
 
         case "serviceman":
-            company = await (await fetch(`${api.uri}/companies/${companyId}`)).json();
+            data.serviceman = await (await fetch(`${api.uri}/servicemans/${servicemanId}`)).json();
 
-            if(company.status === 404) return next();
-            if(company.status === 200) company = company.company;
+            if (data.serviceman.status === 404) return next();
+            if (data.serviceman.status === 200) data.serviceman = data.serviceman.serviceman;
 
             data.status = true;
             data.action = action;
             data.company = company;
-            data.serviceman = (await (await fetch(`${api.uri}/servicemans/${servicemanId}`)).json()).serviceman || {};
             break;
 
         case "add-weapon":
-            company = await (await fetch(`${api.uri}/companies/${companyId}`)).json();
-
-            if(company.status === 404) return next();
-            if(company.status === 200) company = company.company;
-
             resultServicemans = [];
-            const weaponsData = await (await fetch(`${api.uri}/weapons`)).json();
-            const servicemansData = await (await fetch(`${api.uri}/servicemans`)).json();
+            weaponsData = await (await fetch(`${api.uri}/weapons`)).json();
+            servicemansData = await (await fetch(`${api.uri}/servicemans`)).json();
 
             if (weaponsData.status === 200)
                 resultWeapons = weaponsData.weapons.map((weapon) => {
@@ -117,30 +112,82 @@ const getActionData = async ({action, companyId, weaponId, servicemanId}, userId
 
             data.status = true;
             data.action = action;
-            data.company = company;
             data.servicemans = resultServicemans;
             break;
 
         case "add-serviceman":
-            company = await (await fetch(`${api.uri}/companies/${companyId}`)).json();
+            data.status = true;
+            data.action = action;
+            break;
 
-            if(company.status === 404) return next();
-            if(company.status === 200) company = company.company;
+        case "add-maintenance":
+            data.weapon = await (await fetch(`${api.uri}/weapons/${weaponId}`)).json();
+
+            if (data.weapon.status === 404) return next();
+            if (data.weapon.status === 200) data.weapon = data.weapon.weapon;
 
             data.status = true;
             data.action = action;
-            data.company = company;
             break;
 
         case "edit-weapon":
+            data.weapon = await (await fetch(`${api.uri}/weapons/${weaponId}`)).json();
+
+            if (data.weapon.status === 404) return next();
+            if (data.weapon.status === 200) data.weapon = data.weapon.weapon;
+
+            resultServicemans = [];
+            weaponsData = await (await fetch(`${api.uri}/weapons`)).json();
+            servicemansData = await (await fetch(`${api.uri}/servicemans`)).json();
+
+            if (weaponsData.status === 200)
+                resultWeapons = weaponsData.weapons.map((weapon) => {
+                    return {
+                        name_weapon: weapon.name_weapon,
+                        serial_number: weapon.serial_number,
+                        serviceman_id: weapon.serviceman_id,
+                    };
+                })
+
+
+            if (servicemansData.status === 200)
+                for (const serviceman of servicemansData.servicemans) {
+                    const isExist = resultWeapons.some((weapon) => weapon.serviceman_id === serviceman.id_serviceman);
+                    if (!isExist)
+                        resultServicemans.push({
+                            id_serviceman: serviceman.id_serviceman,
+                            first_name: serviceman.first_name,
+                            last_name: serviceman.last_name,
+                            middle_name: serviceman.middle_name,
+                            military_rank: serviceman.military_rank,
+                        });
+                    if (data.weapon.serviceman_id === serviceman.id_serviceman) {
+                        resultServicemans.push({
+                            id_serviceman: serviceman.id_serviceman,
+                            first_name: serviceman.first_name,
+                            last_name: serviceman.last_name,
+                            middle_name: serviceman.middle_name,
+                            military_rank: serviceman.military_rank,
+                        });
+                    }
+                }
+
+
             data.status = true;
             data.action = action;
+            data.servicemans = resultServicemans;
             break;
 
         case "edit-serviceman":
             data.status = true;
             data.action = action;
-            data.serviceman = (await (await fetch(`${api.uri}/servicemans/${servicemanId}`)).json()).serviceman || {}
+            data.serviceman = (await (await fetch(`${api.uri}/servicemans/${servicemanId}`)).json()).serviceman || {};
+            break;
+
+        case "edit-maintenance":
+            data.status = true;
+            data.action = action;
+            data.maintenance = (await (await fetch(`${api.uri}/maintenances/${maintenanceId}`)).json()).maintenance || {};
             break;
 
         default:
@@ -150,6 +197,7 @@ const getActionData = async ({action, companyId, weaponId, servicemanId}, userId
 
     const companiesData = await (await fetch(`${api.uri}/users/${userId}/companies`)).json();
     data.companies = companiesData.status === 200 ? companiesData.companies : [];
+    data.company = company;
 
     return data;
 };

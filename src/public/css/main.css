@@ -224,6 +224,11 @@ input[type=number]::-webkit-inner-spin-button {
     margin-bottom: 5px;
 }
 
+.weapon-page > #weapon-maintenance > .table > h1{
+    color: white;
+    margin-bottom: 5px;
+}
+
 #weapon-maintenance{
     max-width: 100vw;
 }

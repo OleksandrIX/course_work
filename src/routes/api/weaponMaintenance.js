@@ -3,5 +3,8 @@ const WeaponMaintenanceController = require("../../controller/api/weaponMaintena
 
 router.get("/",WeaponMaintenanceController.getWeaponMaintenances);
 router.get("/:maintenanceId",WeaponMaintenanceController.getWeaponMaintenance);
+router.post("/",WeaponMaintenanceController.addWeaponMaintenance);
+router.put("/:maintenanceId",WeaponMaintenanceController.editMaintenance);
+router.delete("/:maintenanceId",WeaponMaintenanceController.deleteMaintenance);
 
 module.exports = router;

@@ -3,9 +3,9 @@ const WeaponController = require("../../controller/api/weapon.controller");
 
 router.get("/", WeaponController.getWeapons);
 router.get("/:weaponId", WeaponController.getWeapon);
-router.post("/", WeaponController.addWeapons);
-router.put("/:weaponId", WeaponController.editWeapons);
-router.delete("/:weaponId", WeaponController.deleteWeapons);
+router.post("/", WeaponController.addWeapon);
+router.put("/:weaponId", WeaponController.editWeapon);
+router.delete("/:weaponId", WeaponController.deleteWeapon);
 
 router.get("/:weaponId/maintenances", WeaponController.getWeaponMaintenances);
 

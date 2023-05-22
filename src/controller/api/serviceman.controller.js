@@ -34,34 +34,49 @@ const getWeaponServiceman = async (req, res) => {
     }
 };
 
-const addServicemans = async (req, res) => {
+const addServiceman = async (req, res) => {
     const servicemanData = req.body;
     for (const key of Object.keys(servicemanData)) {
         if (typeof servicemanData[key] === "string") servicemanData[key] = servicemanData[key].trim();
     }
 
     try {
-       await ServicemanRepo.createServiceman(servicemanData);
-       res.json({status: 200});
+        await ServicemanRepo.createServiceman(servicemanData);
+        res.json({status: 200});
     } catch (err) {
         console.log("Error: " + err.message);
         res.json({message: err.message, status: 500});
     }
 };
 
-const editServicemans = async (req, res) => {
-
+const editServiceman = async (req, res) => {
+    const {servicemanId} = req.params;
+    const servicemanData = req.body;
+    try {
+        await ServicemanRepo.updateServiceman(servicemanId, servicemanData);
+        res.json({status: 200});
+    } catch (err) {
+        console.log("Error: ", err);
+        res.json({message: err.message, status: 500});
+    }
 };
 
-const deleteServicemans = async (req, res) => {
-
+const deleteServiceman = async (req, res) => {
+    const {servicemanId} = req.params;
+    try {
+        await ServicemanRepo.deleteServiceman(servicemanId);
+        res.json({status: 200});
+    } catch (err) {
+        console.log("Error: " + err.message);
+        res.json({message: err.message, status: 500});
+    }
 };
 
 module.exports = {
     getServicemans,
     getServiceman,
     getWeaponServiceman,
-    addServicemans,
-    editServicemans,
-    deleteServicemans,
+    addServiceman,
+    editServiceman,
+    deleteServiceman,
 };

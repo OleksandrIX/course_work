@@ -22,7 +22,8 @@
     </div>
 
     <div class="btn-group">
-        <button type="button" class="btn btn-p">
+        <button type="button" class="btn btn-p"
+                onclick="redirectToEditWeaponPage('<%= actionData.company.id_company %>','<%= actionData.weapon.id_weapon %>')">
             Редагувати озброєння
         </button>
         <button type="button" class="btn btn-p"
@@ -38,7 +39,7 @@
 
         for (let i = 0; i < array.length; i++) {
             const characteristic = array[i];
-            if(characteristic.length === 0) continue;
+            if (characteristic.length === 0) continue;
             const [property, value] = characteristic.split(":").map((item) => item.trim());
             const unitMeasure = value.split(" ")[1];
 
@@ -48,7 +49,6 @@
         return parsedArray;
     } %>
 
-    <% ttx = parseTTX(actionData.weapon.TTX.split(";")) %>
     <div class="table">
         <h1>Тактико-технічні характеристики</h1>
         <table id="ttx-table" class="custom-table">
@@ -60,6 +60,7 @@
             </tr>
             </thead>
             <tbody class="table-body">
+            <% ttx = parseTTX(actionData.weapon.TTX.split(";")) %>
             <% ttx.forEach((characteristic)=>{ %>
                 <tr>
                     <td class="table-body-item"><%= characteristic.property %></td>
@@ -73,19 +74,43 @@
 </form>
 
 <form id="weapon-maintenance" class="custom-form">
-    <div class="input-block">
-        <lable>Тахнічне обслуговування:</lable>
-        <% actionData.maintenances.forEach((maintenance)=>{ %>
-            <h6><%= maintenance.type_maintenance %>---------------<%= maintenance.date_maintenance %></h6>
-        <% }) %>
+    <div class="table">
+        <h1>Тахнічне обслуговування</h1>
+        <table id="ttx-table" class="custom-table">
+            <thead class="table-head">
+            <tr>
+                <th class="table-head-item">№</th>
+                <th class="table-head-item">Тип ТО</th>
+                <th class="table-head-item">Дата проведення ТО</th>
+                <th class="table-head-item">Дії</th>
+            </tr>
+            </thead>
+            <tbody class="table-body">
+            <% actionData.maintenances.forEach((maintenance, index)=>{ %>
+                <tr>
+                    <td class="table-body-item"><%= index + 1 %></td>
+                    <td class="table-body-item"><%= maintenance.type_maintenance %></td>
+                    <td class="table-body-item"><%= maintenance.date_maintenance %></td>
+                    <td class="table-body-item">
+                        <div class="actions">
+                            <button type="button" class="action edit"
+                                    onclick="redirectToEditMaintenancePage('<%= actionData.company.id_company %>','<%= maintenance.id_maintenance %>')">
+                                <%- include("../../actions/edit.ejs") %></button>
+                            <button type="button" class="action delete"
+                                    onclick="removeMaintenance('<%= maintenance.id_maintenance %>')">
+                                <%- include("../../actions/delete.ejs") %></button>
+                        </div>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
     </div>
 
     <div class="btn-group">
-        <button type="button" class="btn btn-p">
-            Редагувати ТО
-        </button>
-        <button type="button" class="btn btn-p">
-            Видалити ТО
+        <button type="button" class="btn btn-p"
+                onclick="redirectToAddMaintenancePage('<%= actionData.company.id_company %>','<%= actionData.weapon.id_weapon %>')">
+            Додати ТО
         </button>
     </div>
 </form>

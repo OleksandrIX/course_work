@@ -65,6 +65,10 @@
                     <div class="form">
                         <%- include("../components/home/add/addServiceman.ejs", actionData) %>
                     </div>
+                <% } else if(actionData.action === "add-maintenance"){ %>
+                    <div class="form">
+                        <%- include("../components/home/add/addMaintenance.ejs", actionData) %>
+                    </div>
                 <% } else if(actionData.action === "weapon"){ %>
                     <div class="weapon-page">
                         <%- include("../components/home/show/showWeapon.ejs", actionData) %>
@@ -74,10 +78,16 @@
                         <%- include("../components/home/show/showServiceman.ejs", actionData) %>
                     </div>
                 <% }else if(actionData.action === "edit-weapon"){ %>
-                    <%- include("../components/home/edit/editWeapon.ejs", actionData) %>
+                    <div class="form">
+                        <%- include("../components/home/edit/editWeapon.ejs", actionData) %>
+                    </div>
                 <% }else if(actionData.action === "edit-serviceman"){ %>
                     <div class="form">
-                    <%- include("../components/home/edit/editServiceman.ejs", actionData) %>
+                        <%- include("../components/home/edit/editServiceman.ejs", actionData) %>
+                    </div>
+                <% }else if(actionData.action === "edit-maintenance"){ %>
+                    <div class="form">
+                        <%- include("../components/home/edit/editMaintenance.ejs", actionData) %>
                     </div>
                 <% } %>
             <% } %>

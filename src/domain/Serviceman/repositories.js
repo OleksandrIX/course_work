@@ -15,10 +15,23 @@ module.exports = (Serviceman) => {
         return Serviceman.create({first_name, last_name, middle_name, birth_date, military_rank, position, company_id});
     };
 
+    const updateServiceman = (servicemanId, {first_name, last_name, middle_name, birth_date, military_rank, position, company_id}) => {
+        return Serviceman.update(
+            {first_name, last_name, middle_name, birth_date, military_rank, position, company_id},
+            {where: {id_serviceman: servicemanId}},
+        );
+    }
+
+    const deleteServiceman = (id) => {
+        return Serviceman.destroy({where: {id_serviceman: id}});
+    };
+
     return {
         getServicemanById,
         getAllServicemans,
         getAllServicemansInCompany,
         createServiceman,
+        updateServiceman,
+        deleteServiceman,
     };
 }

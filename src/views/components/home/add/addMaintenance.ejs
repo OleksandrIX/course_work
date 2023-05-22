@@ -1,0 +1,22 @@
+<form id="maintenance-add" class="custom-form">
+    <input type="hidden" name="weapon_id" value="<%= actionData.weapon.id_weapon %>">
+
+    <div class="input-block">
+        <label for="type_maintenance">Тип ТО:</label>
+        <input id="type_maintenance" name="type_maintenance" type="text"
+               required maxlength="15"
+               autofocus
+               placeholder="ТО-1">
+    </div>
+
+    <div class="input-block">
+        <label for="date_maintenance">Дата проведення ТО:</label>
+        <input id="date_maintenance" name="date_maintenance" type="text"
+               required minlength="10" maxlength="10"
+               placeholder="ДД-ММ-РРРР">
+    </div>
+
+    <div class="input-block">
+        <input class="btn" type="submit" value="Додати">
+    </div>
+</form>

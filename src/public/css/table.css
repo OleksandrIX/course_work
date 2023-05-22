@@ -45,8 +45,13 @@
     width: 50px;
 }
 
+#weapons-table .table-head-item:nth-child(2), #servicemans-table .table-head-item:nth-child(2){
+    width: 100px;
+}
+
 .table-head-item {
     max-width: 500px;
+    width: 100%;
     position: sticky;
     top: 0;
     text-align: center;

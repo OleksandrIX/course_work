@@ -15,6 +15,13 @@ module.exports = (Weapon) => {
         return Weapon.create({name_weapon, serial_number, TTX, date_manufacture, serviceman_id});
     };
 
+    const updateWeapon = (weaponId, {name_weapon, serial_number, TTX, date_manufacture, serviceman_id}) => {
+        return Weapon.update(
+            {name_weapon, serial_number, TTX, date_manufacture, serviceman_id},
+            {where: {id_weapon: weaponId}},
+        );
+    };
+
     const deleteWeapon = (id) => {
         return Weapon.destroy({where: {id_weapon: id}});
     };
@@ -24,6 +31,7 @@ module.exports = (Weapon) => {
         getWeaponByServicemanId,
         getAllWeapons,
         createWeapon,
+        updateWeapon,
         deleteWeapon,
     };
 }

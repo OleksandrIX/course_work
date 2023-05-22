@@ -1,40 +1,41 @@
 <form id="serviceman-show" class="custom-form serviceman">
     <div class="input-block">
         <lable>Прізвище:</lable>
-        <input type="text" value="<%= actionData.serviceman.last_name%>" disabled>
+        <input type="text" value="<%= actionData.serviceman.last_name %>" disabled>
     </div>
 
     <div class="input-block">
         <lable>Ім'я:</lable>
-        <input type="text" value="<%= actionData.serviceman.first_name%>" disabled>
+        <input type="text" value="<%= actionData.serviceman.first_name %>" disabled>
     </div>
 
     <div class="input-block">
         <lable>По батькові:</lable>
-        <input type="text" value="<%= actionData.serviceman.middle_name%>" disabled>
+        <input type="text" value="<%= actionData.serviceman.middle_name %>" disabled>
     </div>
 
     <div class="input-block">
-        <lable>Військове звання: </lable>
-        <input type="text" value="<%= actionData.serviceman.military_rank%>" disabled>
+        <lable>Військове звання:</lable>
+        <input type="text" value="<%= actionData.serviceman.military_rank %>" disabled>
     </div>
 
     <div class="input-block">
         <lable>Посада:</lable>
-        <input type="text" value="<%= actionData.serviceman.position%>" disabled>
+        <input type="text" value="<%= actionData.serviceman.position %>" disabled>
     </div>
 
     <div class="input-block">
-        <lable>Дата народження: </lable>
-        <input type="text" value="<%= actionData.serviceman.birth_date%>" disabled>
+        <lable>Дата народження:</lable>
+        <input type="text" value="<%= actionData.serviceman.birth_date %>" disabled>
     </div>
 
     <div class="btn-group">
         <button type="button" class="btn btn-p"
-        onclick="redirectToEditServicemanPage('<%= actionData.serviceman.id_serviceman %>')">
+                onclick="redirectToEditServicemanPage('<%= actionData.company.id_company %>','<%= actionData.serviceman.id_serviceman %>')">
             Редагувати в/с
         </button>
-        <button type="button" class="btn btn-p">
+        <button type="button" class="btn btn-p"
+                onclick="removeServiceman('<%= actionData.company.id_company %>','<%= actionData.serviceman.id_serviceman %>')">
             Видалити в/с
         </button>
     </div>

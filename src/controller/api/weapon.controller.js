@@ -1,4 +1,4 @@
-const {WeaponRepo, WeaponMaintenanceRepo} = require("../../domain");
+const {WeaponRepo, WeaponMaintenanceRepo, ServicemanRepo} = require("../../domain");
 
 const getWeapons = async (req, res) => {
     try {
@@ -24,16 +24,16 @@ const getWeapon = async (req, res) => {
 
 const getWeaponMaintenances = async (req, res) => {
     const {weaponId} = req.params;
-    try{
+    try {
         const maintenances = await WeaponMaintenanceRepo.getMaintenancesByWeaponId(weaponId);
         res.json({maintenances, status: 200});
-    }catch(err){
+    } catch (err) {
         console.log("Error: " + err.message);
         res.json({message: err.message, status: 500});
     }
 };
 
-const addWeapons = async (req, res) => {
+const addWeapon = async (req, res) => {
     const weaponData = req.body;
     for (const key of Object.keys(weaponData)) {
         if (typeof weaponData[key] === "string") weaponData[key] = weaponData[key].trim();
@@ -48,16 +48,19 @@ const addWeapons = async (req, res) => {
     }
 };
 
-const editWeapons = async (req, res) => {
+const editWeapon = async (req, res) => {
+    const {weaponId} = req.params;
+    const weaponData = req.body;
     try {
-
+        await WeaponRepo.updateWeapon(weaponId, weaponData);
+        res.json({status: 200});
     } catch (err) {
         console.log("Error: " + err.message);
         res.json({message: err.message, status: 500});
     }
 };
 
-const deleteWeapons = async (req, res) => {
+const deleteWeapon = async (req, res) => {
     const {weaponId} = req.params;
     try {
         await WeaponRepo.deleteWeapon(weaponId);
@@ -72,7 +75,7 @@ module.exports = {
     getWeapons,
     getWeapon,
     getWeaponMaintenances,
-    addWeapons,
-    editWeapons,
-    deleteWeapons,
+    addWeapon,
+    editWeapon,
+    deleteWeapon,
 };

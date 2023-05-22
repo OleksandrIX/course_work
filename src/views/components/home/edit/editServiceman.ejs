@@ -1,4 +1,7 @@
 <form id="serviceman-edit" class="custom-form">
+    <input type="hidden" name="company_id" value="<%= actionData.company.id_company%>">
+    <input type="hidden" name="id_serviceman" value="<%= actionData.serviceman.id_serviceman%>">
+
     <div class="input-block">
         <label for="last_name">Прізвище:</label>
         <input id="last_name" name="last_name" type="text"

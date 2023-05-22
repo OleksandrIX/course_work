@@ -67,6 +67,35 @@ function addTTX(event) {
     }
 }
 
+function parseTTX(array) {
+    const parsedArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+        const characteristic = array[i];
+        if (characteristic.length === 0) continue;
+        const [property, value] = characteristic.split(":").map((item) => item.trim());
+        const unitMeasure = value.split(" ")[1];
+
+        parsedArray.push({property, value: value.split(" ")[0], unit_measure: unitMeasure});
+    }
+
+    return parsedArray;
+}
+
+function addTTXsInTable(TTXs) {
+    TTXs = TTXs.trim();
+    TTXs = parseTTX(TTXs.split(";"));
+    for (const ttx of TTXs) {
+        const TTXData = {
+            property: ttx.property,
+            value: ttx.value,
+            unit_measure: ttx.unit_measure,
+        };
+
+        createTableRow(TTXData);
+    }
+}
+
 function editTTX(event) {
     event.preventDefault();
 

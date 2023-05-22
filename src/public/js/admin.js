@@ -110,8 +110,6 @@ function editCompany(event) {
         user_id: companyEditForm["user_id"].value,
     };
 
-    console.log(companyEditForm["id_company"].value);
-
     const xhr = new XMLHttpRequest();
     xhr.open("PUT", uri + `/companies/${companyEditForm["id_company"].value}`, true);
     xhr.setRequestHeader("Content-type", "application/json");
