@@ -1,6 +1,6 @@
 <table class="custom-table companies-table">
     <thead class="table-head">
-    <tr class="table-row">
+    <tr>
         <th class="table-head-item">Назва роти</th>
         <th class="table-head-item">Відповідальна особа</th>
         <th class="table-head-item">Дії</th>
@@ -8,12 +8,14 @@
     </thead>
     <tbody class="table-body">
     <% actionData.companies.forEach((company) => { %>
-        <tr class="table-row">
+        <tr class="table-row open-company">
+            <input type="hidden" value="<%= company.company.id_company %>">
             <td class="table-body-item"><%= company.company.name_company %></td>
             <td class="table-body-item"><%= company.user %></td>
             <td class="table-body-item">
                 <div class="actions">
-                    <button class="action edit" onclick="redirectToEditCompanyPage('<%= company.company.id_company %>')">
+                    <button class="action edit"
+                            onclick="redirectToEditCompanyPage('<%= company.company.id_company %>')">
                         <%- include("../actions/edit.ejs") %></button>
                     <button class="action delete" onclick="removeCompany('<%= company.company.id_company %>')">
                         <%- include("../actions/delete.ejs") %></button>

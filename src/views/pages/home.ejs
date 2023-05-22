@@ -57,6 +57,14 @@
                             </button>
                         </div>
                     </div>
+                <% } else if(actionData.action === "weapon"){ %>
+                    <div class="weapon-page">
+                        <%- include("../components/home/show/showWeapon.ejs", actionData) %>
+                    </div>
+                <% } else if(actionData.action === "serviceman"){ %>
+                    <div class="form">
+                        <%- include("../components/home/show/showServiceman.ejs", actionData) %>
+                    </div>
                 <% } else if(actionData.action === "add-weapon"){ %>
                     <div class="form">
                         <%- include("../components/home/add/addWeapon.ejs", actionData) %>
@@ -68,14 +76,6 @@
                 <% } else if(actionData.action === "add-maintenance"){ %>
                     <div class="form">
                         <%- include("../components/home/add/addMaintenance.ejs", actionData) %>
-                    </div>
-                <% } else if(actionData.action === "weapon"){ %>
-                    <div class="weapon-page">
-                        <%- include("../components/home/show/showWeapon.ejs", actionData) %>
-                    </div>
-                <% } else if(actionData.action === "serviceman"){ %>
-                    <div class="form">
-                        <%- include("../components/home/show/showServiceman.ejs", actionData) %>
                     </div>
                 <% }else if(actionData.action === "edit-weapon"){ %>
                     <div class="form">
@@ -95,5 +95,6 @@
     </div>
 </div>
 <script src="/public/js/home.js"></script>
+<script src="/public/js/CRUD.js"></script>
 </body>
 </html>

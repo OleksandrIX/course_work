@@ -79,7 +79,6 @@ const getActionData = async ({action, companyId, weaponId, servicemanId, mainten
 
             data.status = true;
             data.action = action;
-            data.company = company;
             break;
 
         case "add-weapon":

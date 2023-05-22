@@ -1,14 +1,33 @@
 const uri = "http://localhost:5555/api";
 
-const userAddForm = document.querySelector("#user-add");
-const companyAddForm = document.querySelector("#company-add");
-const userEditForm = document.querySelector("#user-edit");
-const companyEditForm = document.querySelector("#company-edit");
+const weaponTable = document.querySelector("#weapons-table");
+const servicemanTable = document.querySelector("#servicemans-table");
 
-if (userAddForm) userAddForm.addEventListener("submit", addUser);
-if (companyAddForm) companyAddForm.addEventListener("submit", addCompany);
-if (userEditForm) userEditForm.addEventListener("submit", editUser);
-if (companyEditForm) companyEditForm.addEventListener("submit", editCompany);
+const weaponBtn = document.querySelector("#weapon-btn");
+const servicemanBtn = document.querySelector("#serviceman-btn");
+
+if (weaponBtn) {
+    weaponBtn.addEventListener("click", () => {
+        weaponTable.style.display = "block";
+        servicemanTable.style.display = "none";
+    });
+}
+
+if (servicemanBtn) {
+    servicemanBtn.addEventListener("click", () => {
+        servicemanTable.style.display = "block";
+        weaponTable.style.display = "none";
+    });
+}
+
+const openCompanyBtns = document.querySelectorAll(".open-company");
+if (openCompanyBtns.length !== 0) {
+    for (const openCompanyBtn of openCompanyBtns) {
+        const [companyId, td1, td2] = openCompanyBtn.children;
+        td1.addEventListener("click", () => openCompany(companyId.value))
+        td2.addEventListener("click", () => openCompany(companyId.value))
+    }
+}
 
 function actionsWithUsers() {
     location.href = "/admin?type=user&action=users";
@@ -16,6 +35,42 @@ function actionsWithUsers() {
 
 function actionsWithCompanies() {
     location.href = "/admin?type=company&action=companies";
+}
+
+function openCompany(companyId) {
+    location.href = `/admin?type=company&action=company&companyId=${companyId}`;
+}
+
+function openWeapon(companyId, weaponId) {
+    location.href = `/admin?type=company&action=weapon&companyId=${companyId}&weaponId=${weaponId}`;
+}
+
+function openServiceman(companyId, servicemanId) {
+    location.href = `/admin?type=company&action=serviceman&companyId=${companyId}&servicemanId=${servicemanId}`;
+}
+
+function redirectToAddWeaponPage(companyId) {
+    location.href = `/admin?type=company&action=add-weapon&companyId=${companyId}`;
+}
+
+function redirectToAddServicemanPage(companyId) {
+    location.href = `/admin?type=company&action=add-serviceman&companyId=${companyId}`;
+}
+
+function redirectToAddMaintenancePage(companyId, weaponId) {
+    location.href = `/admin?type=company&action=add-maintenance&companyId=${companyId}&weaponId=${weaponId}`;
+}
+
+function redirectToEditWeaponPage(companyId, weaponId) {
+    location.href = `/admin?type=company&action=edit-weapon&companyId=${companyId}&weaponId=${weaponId}`;
+}
+
+function redirectToEditServicemanPage(companyId, servicemanId) {
+    location.href = `/admin?type=company&action=edit-serviceman&companyId=${companyId}&servicemanId=${servicemanId}`;
+}
+
+function redirectToEditMaintenancePage(companyId, maintenanceId) {
+    location.href = `/admin?type=company&action=edit-maintenance&companyId=${companyId}&maintenanceId=${maintenanceId}`;
 }
 
 function redirectToAddUserPage() {
@@ -34,12 +89,24 @@ function redirectToEditCompanyPage(companyId) {
     location.href = `/admin?type=company&action=edit-company&companyId=${companyId}`;
 }
 
+const addUserForm = document.querySelector("#user-add");
+const addCompanyForm = document.querySelector("#company-add");
+
+if (addUserForm) addUserForm.addEventListener("submit", addUser);
+if (addCompanyForm) addCompanyForm.addEventListener("submit", addCompany);
+
+const editUserForm = document.querySelector("#user-edit");
+const editCompanyForm = document.querySelector("#company-edit");
+
+if (editUserForm) editUserForm.addEventListener("submit", editUser);
+if (editCompanyForm) editCompanyForm.addEventListener("submit", editCompany);
+
 function addUser(event) {
     event.preventDefault();
 
     const userData = {
-        username: userAddForm["username"].value,
-        password: userAddForm["password"].value,
+        username: addUserForm["username"].value,
+        password: addUserForm["password"].value,
     };
 
     const xhr = new XMLHttpRequest();
@@ -61,8 +128,8 @@ function addCompany(event) {
     event.preventDefault();
 
     const companyData = {
-        name_company: companyAddForm["name_company"].value,
-        user_id: companyAddForm["user_id"].value,
+        name_company: addCompanyForm["name_company"].value,
+        user_id: addCompanyForm["user_id"].value,
     };
 
     const xhr = new XMLHttpRequest();
@@ -84,11 +151,11 @@ function editUser(event) {
     event.preventDefault();
 
     const userData = {
-        username: userEditForm["username"].value,
+        username: editUserForm["username"].value,
     };
 
     const xhr = new XMLHttpRequest();
-    xhr.open("PUT", uri + `/users/${userEditForm["id_user"].value}`, true);
+    xhr.open("PUT", uri + `/users/${editUserForm["id_user"].value}`, true);
     xhr.setRequestHeader("Content-type", "application/json");
 
     xhr.onload = () => {
@@ -106,12 +173,12 @@ function editCompany(event) {
     event.preventDefault();
 
     const companyData = {
-        name_company: companyEditForm["name_company"].value,
-        user_id: companyEditForm["user_id"].value,
+        name_company: editCompanyForm["name_company"].value,
+        user_id: editCompanyForm["user_id"].value,
     };
 
     const xhr = new XMLHttpRequest();
-    xhr.open("PUT", uri + `/companies/${companyEditForm["id_company"].value}`, true);
+    xhr.open("PUT", uri + `/companies/${editCompanyForm["id_company"].value}`, true);
     xhr.setRequestHeader("Content-type", "application/json");
 
     xhr.onload = () => {

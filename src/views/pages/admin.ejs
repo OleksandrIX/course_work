@@ -56,14 +56,69 @@
                         <div class="table">
                             <%- include("../components/admin/tableCompanies.ejs", actionData) %>
                         </div>
+                    <% }else if(actionData.action === "company"){ %>
+                        <div class="weapons-servicemans">
+                            <h1 class="name-company"><%= actionData.company.name_company %></h1>
+                            <ul>
+                                <li id="weapon-btn">Озброєння</li>
+                                <li id="serviceman-btn">Військовослужбовці</li>
+                            </ul>
+                        </div>
+                        <div class="table">
+                            <%- include("../components/home/table/tableWeapon.ejs", actionData) %>
+                            <%- include("../components/home/table/tableServiceman.ejs", actionData) %>
+
+                            <div class="btn-group">
+                                <button class="btn btn-p"
+                                        onclick="redirectToAddWeaponPage('<%= JSON.stringify(actionData.company.id_company) %>')">
+                                    Додати озброєння
+                                </button>
+                                <button class="btn btn-p"
+                                        onclick="redirectToAddServicemanPage('<%= JSON.stringify(actionData.company.id_company) %>')">
+                                    Додати в/с
+                                </button>
+                            </div>
+                        </div>
                     <% } else if(actionData.action === "add-company"){ %>
                         <div class="form">
                             <%- include("../components/admin/addCompany.ejs", actionData) %>
                         </div>
                     <% } else if(actionData.action === "edit-company"){ %>
-                            <div class="form">
-                                <%- include("../components/admin/editCompany.ejs", actionData) %>
-                            </div>
+                        <div class="form">
+                            <%- include("../components/admin/editCompany.ejs", actionData) %>
+                        </div>
+                    <% } else if(actionData.action === "weapon"){ %>
+                        <div class="weapon-page">
+                            <%- include("../components/home/show/showWeapon.ejs", actionData) %>
+                        </div>
+                    <% } else if(actionData.action === "serviceman"){ %>
+                        <div class="form">
+                            <%- include("../components/home/show/showServiceman.ejs", actionData) %>
+                        </div>
+                    <% } else if(actionData.action === "add-weapon"){ %>
+                        <div class="form">
+                            <%- include("../components/home/add/addWeapon.ejs", actionData) %>
+                        </div>
+                    <% } else if(actionData.action === "add-serviceman"){ %>
+                        <div class="form">
+                            <%- include("../components/home/add/addServiceman.ejs", actionData) %>
+                        </div>
+                    <% } else if(actionData.action === "add-maintenance"){ %>
+                        <div class="form">
+                            <%- include("../components/home/add/addMaintenance.ejs", actionData) %>
+                        </div>
+                    <% }else if(actionData.action === "edit-weapon"){ %>
+                        <div class="form">
+                            <%- include("../components/home/edit/editWeapon.ejs", actionData) %>
+                        </div>
+                    <% }else if(actionData.action === "edit-serviceman"){ %>
+                        <div class="form">
+                            <%- include("../components/home/edit/editServiceman.ejs", actionData) %>
+                        </div>
+                    <% }else if(actionData.action === "edit-maintenance"){ %>
+                        <div class="form">
+                            <%- include("../components/home/edit/editMaintenance.ejs", actionData) %>
+                        </div>
                     <% } %>
                 <% } %>
             <% } %>
@@ -71,5 +126,6 @@
     </div>
 </div>
 <script src="/public/js/admin.js"></script>
+<script src="/public/js/CRUD.js"></script>
 </body>
 </html>
