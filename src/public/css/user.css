@@ -1,0 +1,74 @@
+.main-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-container {
+    flex-grow: 1;
+}
+
+.card-container {
+    padding: 50px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.personnel-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.separate-personnel-page {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.personnel-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.salaries-history-container{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.salaries-history-container > .btn{
+    font-size: 2rem;
+    padding: 5px 10px;
+}
+
+.personnel-info-container > .group-btn > .btn {
+    font-size: 2rem;
+    padding: 5px 10px;
+}
+
+.personnel-info {
+    border-radius: 20px;
+    background: rgba(107, 232, 173, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 20px;
+}
+
+.input-container {
+    font-size: 1.4rem;
+    display: flex;
+}
+
+.input-container > input {
+    font-size: 1.4rem;
+}

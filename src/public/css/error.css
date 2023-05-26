@@ -1,0 +1,30 @@
+.error-wrapper{
+    background: cornflowerblue;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.error-status, .error-message{
+    color: red;
+}
+
+.error-message{
+    font-size: 2rem;
+}
+
+.error-back{
+    cursor: pointer;
+    border: none;
+    font-size: 3rem;
+    background: cornflowerblue;
+    color: white;
+    transition: all .25s ease;
+}
+
+.error-back:hover{
+    color: #c4c4c4;
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/admin.css">
+    <title>Сторінка адміністратора</title>
+</head>
+<body>
+<div class="page admin-page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page">Домашня сторінка адміністратора</h2>
+            <div class="top-navbar-buttons">
+                <li class="top-navbar-item">
+                    <a class="navbar-btn" href="/">Сторінка користувача</a>
+                </li>
+                <li class="top-navbar-item">
+                    <button class="navbar-btn" onclick="logout();" type="submit">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="admin-page-container">
+        <div class="sidebar">
+            <ul class="side-navbar">
+                <li class="side-navbar-item">
+                    <a id="link-users-page" class="navbar-btn" href="/admin/users">Користувачі</a>
+                </li>
+                <li class="side-navbar-item">
+                    <a id="link-units-page" class="navbar-btn" href="/admin/units">Підрозділи</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main-panel">
+            <div class="banner">
+                <p class="banner-text">Це напель адміністратора</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/public/js/logout.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/user.css">
+    <link rel="stylesheet" href="/public/css/table.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <title><%= nameUnit %></title>
+</head>
+<body>
+<div class="page main-page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page">Інформація: <%= nameUnit %></h2>
+            <div class="top-navbar-buttons">
+                <% if(isAdmin){ %>
+                    <li class="top-navbar-item">
+                        <a class="navbar-btn" href="/admin">Панель адміністратора</a>
+                    </li>
+                <% } %>
+                <li class="top-navbar-item">
+                    <button class="navbar-btn" onclick="logout();" type="submit">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="page-container">
+        <div class="back-wrapper symbol-wrapper">
+            <h1 class="back-symbol symbol" onclick="backToHomePage()">&#8592;</h1>
+        </div>
+        <div class="add-wrapper symbol-wrapper">
+            <h1 id="open-add-personnel-modal" class="add-symbol symbol">&plus;</h1>
+        </div>
+        <div class="personnel-page">
+            <% if(personnelOfUnit.length === 0){ %>
+                <div class="empty-table">
+                    <h2>В цьому підрозділі немає в/с</h2>
+                </div>
+            <% }else { %>
+                <%- include("../../components/personnel/table.ejs", personnelOfUnit) %>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include("../../components/personnel/add.ejs") %>
+
+<script src="/public/js/logout.js"></script>
+<script src="/public/js/user/index.js"></script>
+<script src="/public/js/user/personnel.js"></script>
+</body>
+</html>

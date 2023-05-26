@@ -1,0 +1,99 @@
+.auth {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(235, 245, 224);
+}
+
+.auth-form {
+    position: relative;
+    width: 30vw;
+    padding: 1vw;
+}
+
+.auth-form {
+    background: #ffffff;
+    border: 2px solid #888888;
+    border-radius: 1vh;
+}
+
+.auth-form {
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.29);
+}
+
+.login-form {
+    height: 50vh;
+}
+
+.registration-form {
+    min-height: 60vh;
+}
+
+.name-auth {
+    color: black;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.input-wrapper {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-block > label {
+    font-size: 2.2rem;
+}
+
+.input-block > input {
+    height: 4vh;
+    font-size: 2rem;
+}
+
+.auth-btn {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    border-radius: 1vh;
+    background: rgba(112, 176, 86);
+    color: white;
+    font-size: 2rem;
+    padding: 1vh;
+    margin-top: 4vh;
+    transition: all .25s ease;
+}
+
+.auth-btn:hover {
+    background: rgba(112, 176, 86, 0.8);
+}
+
+.link-auth {
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: rgb(96, 25, 229);
+    transition: all .25s ease;
+}
+
+.link-auth:hover {
+    color: rgba(148, 89, 255, 0.8);
+}
+
+.auth-error-message{
+    margin-top: 5px;
+    color: red;
+    text-align: center;
+    border: 1px solid red;
+    padding: 10px;
+}

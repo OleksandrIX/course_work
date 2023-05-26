@@ -1,0 +1,21 @@
+<div id="add-salary-modal" class="modal">
+    <div class="modal-content add-salary-modal-content">
+        <span id="close-add-salary-modal" class="close">&times;</span>
+        <p class="modal-name">Додати зарплату</p>
+
+        <form id="add-salary-form" class="modal-form">
+            <div class="input-wrapper">
+                <div class="input-block">
+                    <label for="salary_date">Дата видачі зарплати:</label>
+                    <input id="salary_date" name="salary_date" type="date" required>
+                </div>
+
+                <div class="input-block">
+                    <label for="amount">Сума:</label>
+                    <input id="amount" name="amount" type="text" required minlength="5" maxlength="7">
+                </div>
+            </div>
+            <input class="btn salary-btn btn-modal" type="submit" value="Додати">
+        </form>
+    </div>
+</div>

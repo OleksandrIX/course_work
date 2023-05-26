@@ -1,0 +1,21 @@
+<div class="salaries-table">
+    <table id="salaries-table" class="table">
+        <thead class="table-head">
+        <tr class="table-row">
+            <th class="table-head-item">Номер</th>
+            <th class="table-head-item">Дата видачі зарплати</th>
+            <th class="table-head-item">Сума</th>
+        </tr>
+        </thead>
+        <tbody class="table-body">
+        <% salaries.forEach((salary, index)=>{ %>
+            <tr class="table-row open-edit-salary-modal">
+                <input id="salary_id" type="hidden" value="<%= salary.id_salary%>">
+                <td class="table-body-item"><%= index + 1 %></td>
+                <td class="table-body-item"><%= salary.salary_date %></td>
+                <td class="table-body-item"><%= salary.amount %></td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</div>

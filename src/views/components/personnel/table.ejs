@@ -1,0 +1,27 @@
+<div class="personnel-table">
+    <table id="personnel-table" class="table">
+        <thead class="table-head">
+        <tr class="table-row">
+            <th class="table-head-item">Номер</th>
+            <th class="table-head-item">Прізвище</th>
+            <th class="table-head-item">Ім'я</th>
+            <th class="table-head-item">Побатькові</th>
+            <th class="table-head-item">Військове звання</th>
+            <th class="table-head-item">Посада</th>
+        </tr>
+        </thead>
+        <tbody class="table-body">
+        <% personnelOfUnit.forEach((personnel, index)=>{ %>
+            <tr class="table-row"
+                ondblclick="openSalariesOfPersonnel('<%= personnel.id_personnel %>')">
+                <td class="table-body-item"><%= index + 1 %></td>
+                <td class="table-body-item"><%= personnel.last_name %></td>
+                <td class="table-body-item"><%= personnel.first_name %></td>
+                <td class="table-body-item"><%= personnel.middle_name %></td>
+                <td class="table-body-item"><%= personnel.military_rank %></td>
+                <td class="table-body-item"><%= personnel.position %></td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</div>

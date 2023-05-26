@@ -1,0 +1,25 @@
+<div id="edit-salary-modal" class="modal">
+    <div class="modal-content edit-salary-modal-content">
+        <span id="close-edit-salary-modal" class="close">&times;</span>
+        <p class="modal-name">Редагувати зарплату</p>
+
+        <form id="edit-salary-form" class="modal-form">
+            <div class="input-wrapper">
+                <input name="id_salary" type="hidden" value="">
+                <div class="input-block">
+                    <label for="salary_date">Дата видачі зарплати:</label>
+                    <input id="salary_date" name="salary_date" type="date" required>
+                </div>
+
+                <div class="input-block">
+                    <label for="amount">Сума:</label>
+                    <input id="amount" name="amount" type="text" required minlength="5" maxlength="8">
+                </div>
+            </div>
+            <div class="group-btn">
+            <input class="btn salary-btn btn-modal" type="submit" value="Редагувати">
+            <input id="delete-salary" class="btn salary-btn btn-modal" type="button" value="Видалити">
+            </div>
+        </form>
+    </div>
+</div>

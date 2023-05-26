@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/user.css">
+    <title>Сторінка користувача</title>
+</head>
+<body>
+<div class="page main-page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page">Домашня сторінка</h2>
+            <div class="top-navbar-buttons">
+                <% if(isAdmin){ %>
+                    <li class="top-navbar-item">
+                        <a class="navbar-btn" href="/admin">Панель адміністратора</a>
+                    </li>
+                <% } %>
+                <li class="top-navbar-item">
+                    <button class="navbar-btn" onclick="logout();" type="submit">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <% if(units.length === 0){ %>
+        <div class="personnel-page">
+            <div class="empty-table">
+                <h2>Немає підрозділів</h2>
+            </div>
+        </div>
+    <% }else { %>
+        <div class="page-container">
+            <%- include("../../components/unit/list.ejs", units) %>
+        </div>
+    <% } %>
+
+</div>
+
+
+<script src="/public/js/logout.js"></script>
+<script src="/public/js/user/index.js"></script>
+</body>
+</html>

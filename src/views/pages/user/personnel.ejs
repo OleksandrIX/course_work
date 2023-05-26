@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/user.css">
+    <link rel="stylesheet" href="/public/css/table.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <title><%= name %></title>
+</head>
+<body>
+<div class="page main-page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page">Інформація про: <%= name %></h2>
+            <div class="top-navbar-buttons">
+                <% if(isAdmin){ %>
+                    <li class="top-navbar-item">
+                        <a class="navbar-btn" href="/admin">Панель адміністратора</a>
+                    </li>
+                <% } %>
+                <li class="top-navbar-item">
+                    <button class="navbar-btn" onclick="logout();" type="submit">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+
+    <div class="page-container">
+        <div class="back-wrapper symbol-wrapper">
+            <h1 class="back-symbol symbol" onclick="backToUnitPage()">&#8592;</h1>
+        </div>
+    </div>
+    <div class="separate-personnel-page">
+        <div class="personnel-info-container">
+            <%- include("../../components/personnel/info.ejs", personnel) %>
+            <div class="group-btn">
+                <button id="open-edit-personnel-modal" type="button" class="btn">Редагувати</button>
+                <button type="button" class="btn" onclick="deletePersonnel('<%= personnel.id_personnel%>')">Видалити</button>
+            </div>
+        </div>
+        <div class="salaries-history-container">
+            <% let salaries = personnel.salaries; %>
+            <% if(salaries.length === 0){ %>
+                <div class="empty-table">
+                    <h2>Немає даних</h2>
+                </div>
+            <% }else{ %>
+                <%- include("../../components/salary/table.ejs", {salaries}) %>
+            <% } %>
+            <button id="open-add-salary-modal" type="button" class="btn">Додати</button>
+        </div>
+    </div>
+</div>
+
+<%- include("../../components/personnel/edit.ejs") %>
+<%- include("../../components/salary/add.ejs") %>
+<%- include("../../components/salary/edit.ejs") %>
+
+<script src="/public/js/logout.js"></script>
+<script src="/public/js/user/index.js"></script>
+<script src="/public/js/user/salary.js"></script>
+<script src="/public/js/user/personnel.js"></script>
+</body>
+</html>

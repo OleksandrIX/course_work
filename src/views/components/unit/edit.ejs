@@ -1,0 +1,22 @@
+<div id="edit-unit-modal" class="modal">
+    <div class="modal-content edit-unit-modal-content">
+        <span id="close-edit-unit-modal" class="close">&times;</span>
+        <p class="modal-name">Редагувати підрозділ</p>
+
+        <form id="edit-unit-form" class="modal-form">
+            <input name="id_unit" type="hidden" value="">
+            <div class="input-wrapper">
+                <div class="input-block">
+                    <label for="name_unit">Назва:</label>
+                    <input id="name_unit" name="name_unit" type="text"
+                           value=""
+                           autofocus required minlength="2" maxlength="20">
+                </div>
+            </div>
+            <div class="group-btn">
+                <input class="btn unit-btn btn-modal" type="submit" value="Редагувати">
+                <input id="delete-unit" class="btn unit-btn btn-modal" type="button" value="Видалити">
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div id="add-personnel-modal" class="modal">
+    <div class="modal-content add-personnel-modal-content">
+        <span id="close-add-personnel-modal" class="close">&times;</span>
+        <p class="modal-name">Додати військовослужбовця</p>
+
+        <form id="add-personnel-form" class="modal-form">
+            <div class="input-wrapper">
+                <div class="input-block">
+                    <label for="last_name">Прізвище:</label>
+                    <input id="last_name" name="last_name" type="text"
+                           autofocus required minlength="2" maxlength="18">
+                </div>
+
+                <div class="input-block">
+                    <label for="first_name">Ім'я:</label>
+                    <input id="first_name" name="first_name" type="text"
+                           required minlength="2" maxlength="18">
+                </div>
+
+                <div class="input-block">
+                    <label for="middle_name">По батькові:</label>
+                    <input id="middle_name" name="middle_name" type="text"
+                           required minlength="2" maxlength="20">
+                </div>
+
+                <div class="input-block">
+                    <label for="enlistment_date">Дата призову:</label>
+                    <input id="enlistment_date" name="enlistment_date" type="date" required>
+                </div>
+
+                <div class="input-block">
+                    <label for="military_rank">Військове звання:</label>
+                    <select id="military_rank" name="military_rank" required>
+                        <option value="солд.">солд.</option>
+                        <option value="ст. солд.">ст. солд.</option>
+                        <option value="мл. с-т">мл. с-т</option>
+                        <option value="с-т">с-т</option>
+                        <option value="ст. с-т">ст. с-т</option>
+                        <option value="старшина">старшина</option>
+                        <option value="мл. л-т">мл. л-т</option>
+                        <option value="л-т">л-т</option>
+                        <option value="ст. л-т">ст. л-т</option>
+                        <option value="к-н">к-н</option>
+                        <option value="м-р">м-р</option>
+                        <option value="п/п-к">п/п-к</option>
+                        <option value="п-к">п-к</option>
+                    </select>
+                </div>
+
+                <div class="input-block">
+                    <label for="position">Посада:</label>
+                    <input id="position" name="position" type="text"
+                           required minlength="3" maxlength="20">
+                </div>
+            </div>
+            <input class="btn personnel-btn btn-modal" type="submit" value="Додати">
+        </form>
+    </div>
+</div>

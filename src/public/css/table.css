@@ -1,0 +1,111 @@
+.table {
+    border-collapse: collapse;
+    font-size: 2rem;
+}
+
+.table-head {
+    background-color: #ababab;
+}
+
+.table-head-item {
+    font-weight: bold;
+    width: 100%;
+}
+
+.table-head-item,
+.table-body-item {
+    padding: 10px;
+    text-align: left;
+}
+
+.table-body .table-row {
+    transition: all .25s ease;
+    cursor: pointer;
+}
+
+.table-body .table-row:nth-child(odd) {
+    background-color: #d2d2d2;
+}
+
+.table-body .table-row:hover {
+    background-color: #9f9f9f;
+}
+
+.users-table {
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.activation-btn {
+    border: 0;
+    background: rgba(0, 0, 0, 0);
+    font-size: 2rem;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.activate {
+    color: green;
+    transition: all .25s ease;
+}
+
+.activate:hover {
+    color: rgba(0, 128, 0, 0.5);
+}
+
+.deactivate {
+    color: red;
+    transition: all .25s ease;
+}
+
+.deactivate:hover {
+    color: rgba(255, 0, 0, 0.5);
+}
+
+#users-table {
+    width: 40vw;
+}
+
+#users-table .table-head-item:first-child {
+    width: 100px;
+}
+
+#users-table .table-head-item:not(:first-child),
+#users-table .table-body-item:not(:first-child) {
+    width: calc((100% - 100px) / 2);
+}
+
+.personnel-table{
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    width: 1330px
+}
+
+#personnel-table .table-head-item:first-child {
+    width: 100px;
+}
+
+#personnel-table .table-head-item:not(:first-child),
+#personnel-table .table-body-item:not(:first-child) {
+    width: calc((100% - 100px) / 2);
+}
+
+.salaries-table{
+    max-height: 550px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+#salaries-table .table-head-item:first-child {
+    width: 100px;
+}
+
+#salaries-table .table-head-item:nth-child(2) {
+    white-space: nowrap;
+}

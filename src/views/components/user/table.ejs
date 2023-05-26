@@ -1,0 +1,41 @@
+<div class="users-table">
+    <table id="users-table" class="table">
+        <thead class="table-head">
+        <tr class="table-row">
+            <th class="table-head-item">Номер</th>
+            <th class="table-head-item">Ім'я</th>
+            <th class="table-head-item">Статус</th>
+            <th class="table-head-item">Дія</th>
+        </tr>
+        </thead>
+        <tbody class="table-body">
+        <% users.forEach((user, index)=>{ %>
+            <tr class="table-row open-show-user-modal">
+                <input id="is_user" type="hidden" value="<%= user.id_user %>">
+                <td class="table-body-item"><%= index + 1 %></td>
+                <td class="table-body-item"><%= user.username %></td>
+                <td class="table-body-item">
+                    <% if(user.isActive){ %>
+                        Активний
+                    <% } else{ %>
+                        Не активний
+                    <% } %>
+                </td>
+                <td class="table-body-item">
+                    <% if(user.isActive){ %>
+                        <button class="activation-btn deactivate"
+                                onclick="deactivateUser('<%= user.id_user %>')">
+                            &#10008;
+                        </button>
+                    <% } else{ %>
+                        <button class="activation-btn activate"
+                                onclick="activateUser('<%= user.id_user %>')">
+                            &#x2714;
+                        </button>
+                    <% } %>
+                </td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</div>

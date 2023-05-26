@@ -1,0 +1,27 @@
+<div id="add-user-modal" class="modal">
+    <div class="modal-content add-user-modal-content">
+        <span id="close-add-user-modal" class="close">&times;</span>
+        <p class="modal-name">Додати користувача</p>
+
+        <form id="add-user-form" class="modal-form">
+            <div class="input-wrapper">
+                <div class="input-block">
+                    <label for="username">Ім'я користувача:</label>
+                    <input id="username" name="username" type="text"
+                           required autofocus minlength="3" maxlength="12">
+                </div>
+
+                <div class="input-block">
+                    <label for="password">Пароль:</label>
+                    <input id="password" name="password" type="password" required minlength="3">
+                </div>
+
+                <div class="input-block">
+                    <label for="repeat-password">Повторіть пароль:</label>
+                    <input id="repeat-password" name="repeat-password" type="password" required minlength="3">
+                </div>
+            </div>
+            <input class="btn add-user-btn btn-modal" type="submit" value="Додати">
+        </form>
+    </div>
+</div>

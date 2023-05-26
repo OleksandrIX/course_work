@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/table.css">
+    <link rel="stylesheet" href="/public/css/admin.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <title>Сторінка адміністратора</title>
+</head>
+<body>
+<div class="page admin-page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page">Користувачі</h2>
+            <div class="top-navbar-buttons">
+                <li class="top-navbar-item">
+                    <a class="navbar-btn" href="/">Сторінка користувача</a>
+                </li>
+                <li class="top-navbar-item">
+                    <button class="navbar-btn" onclick="logout();" type="submit">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="admin-page-container">
+        <div class="sidebar">
+            <ul class="side-navbar">
+                <li class="side-navbar-item">
+                    <a id="link-users-page" class="navbar-btn selected" href="#">Користувачі</a>
+                </li>
+                <li class="side-navbar-item">
+                    <a id="link-units-page" class="navbar-btn" href="/admin/units">Підрозділи</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main-panel">
+            <div class="user-page">
+                <% if(users.length === 0){ %>
+                    <div class="empty-table">
+                        <h2>Немає користувачів</h2>
+                    </div>
+                <% }else { %>
+                    <%- include("../../components/user/table.ejs", users) %>
+                <% } %>
+                <button type="button" id="open-add-user-modal" class="btn add-user-btn">Додати</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../../components/user/add.ejs") %>
+<%- include("../../components/user/show.ejs") %>
+<%- include("../../components/user/edit.ejs") %>
+<%- include("../../components/user/changePassword.ejs") %>
+
+<script src="/public/js/logout.js"></script>
+<script src="/public/js/admin/index.js"></script>
+<script src="/public/js/admin/user.js"></script>
+</body>
+</html>

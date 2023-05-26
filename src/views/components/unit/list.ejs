@@ -1,0 +1,14 @@
+<div class="card-container">
+    <% units.forEach((unit)=>{ %>
+        <div class="card" onclick="openUnit('<%= unit.id_unit%>')">
+            <h2 class="name-unit">
+                <%= unit.name_unit %>
+            </h2>
+            <h4 class="commander-unit">
+                <%= unit.personnel.military_rank %>
+                <%= unit.personnel.last_name %>
+                <%= unit.personnel.first_name[0].toUpperCase() %>.<%= unit.personnel.middle_name[0].toUpperCase() %>.
+            </h4>
+        </div>
+    <% }) %>
+</div>
