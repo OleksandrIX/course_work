@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/auth.css">
+    <title>Реєстрація</title>
+</head>
+<body>
+<div class="auth">
+    <form class="auth-form" action="/registration" method="post"
+          onsubmit="return verificationPassword()">
+        <h2 class="name-auth">Реєстрація</h2>
+        <% if (errorMessage) { %>
+            <p class="auth-error-message"><%= errorMessage %></p>
+        <% } %>
+        <div class="input-wrapper">
+            <div class="input-block">
+                <label for="username">Ім'я користувача:</label>
+                <input id="username" name="username" type="text" required autofocus minlength="3" maxlength="12">
+            </div>
+
+            <div class="input-block">
+                <label for="password">Пароль:</label>
+                <input id="password" name="password" type="password" required minlength="3">
+            </div>
+
+            <div class="input-block">
+                <label for="repeat-password">Повторіть пароль:</label>
+                <input id="repeat-password" name="repeat-password" type="password" required minlength="3">
+            </div>
+        </div>
+        <input class="auth-btn" type="submit" value="Зареєструватися">
+        <a class="link-auth" href="/login">Вже є обліковий запис</a>
+    </form>
+</div>
+
+<script>
+    function verificationPassword() {
+        const password = document.querySelector("#password").value;
+        const repeatPassword = document.querySelector("#repeat-password").value;
+
+        let errorMessage;
+        if (password !== repeatPassword) {
+            errorMessage = document.querySelector(".auth-error-message");
+            if(!errorMessage){
+                errorMessage = document.createElement("p");
+                errorMessage.textContent = "Пароль не співпадає";
+                errorMessage.className = "auth-error-message";
+                const formTitle = document.querySelector(".name-auth");
+                formTitle.insertAdjacentElement("afterend", errorMessage);
+                return false;
+            }
+
+            errorMessage.textContent = "Пароль не співпадає";
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>

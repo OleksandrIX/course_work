@@ -1,0 +1,18 @@
+.error-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #4f4e4e;
+}
+
+.error-status{
+    font-size: 5rem;
+    color: saddlebrown;
+}
+
+.error-message{
+    font-size: 3.4rem;
+    color: firebrick;
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <title>Документ - <%= doc.documentNumber %></title>
+</head>
+<body>
+<div class="page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page">Документ - <%= doc.documentNumber %></h2>
+            <div class="top-navbar-items">
+                <div class="documents">
+                    <li class="top-navbar-item">
+                        <a href="/documents/orders">Накази</a>
+                    </li>
+                    <li class="top-navbar-item">
+                        <a href="/documents/instructions">Розпорядження</a>
+                    </li>
+                    <% if (isAdmin){ %>
+                        <li class="top-navbar-item">
+                            <a href="/users">Користувачі</a>
+                        </li>
+                    <% } %>
+                </div>
+                <li class="top-navbar-item">
+                    <button class="navbar-btn" onclick="logout();" type="submit">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="main-container">
+        <h1 class="back-btn" onclick="location.href = document.referrer">&#8592;</h1>
+        <div class="document-container">
+            <div class="document-page">
+                <div class="document-content"></div>
+            </div>
+        </div>
+        <div class="document-buttons">
+            <button type="button" class="edit-document"
+                    onclick="openEditDocumentModal()">
+                Редагувати
+            </button>
+            <button type="button" class="save-document"
+                    onclick="saveDocument('<%= doc.idDocument %>')">
+                Зберегти
+            </button>
+            <button type="button" class="delete-document"
+                    onclick="deleteDocument('<%= doc.idDocument %>')">
+                Видалити
+            </button>
+        </div>
+    </div>
+</div>
+
+<%- include("../modal/document/edit.ejs") %>
+
+<script src="/public/js/logout.js"></script>
+<script src="/public/js/document.js"></script>
+<script src="/public/js/index.js"></script>
+</body>
+</html>

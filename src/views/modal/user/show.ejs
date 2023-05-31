@@ -1,0 +1,25 @@
+<div id="show-user-modal" class="modal">
+    <div class="modal-content show-user-modal-content">
+        <span class="close" onclick="closeShowUserModal()">&times;</span>
+        <p class="modal-name">Інформація про користувача</p>
+        <div class="user-info">
+            <form id="show-user-form" class="form">
+                <input id="idUser" type="hidden" value="">
+                <label for="username">
+                    Ім'я:
+                    <input id="username" name="username" type="text" value="" disabled>
+                </label>
+
+                <label for="role">
+                    Роль:
+                    <input id="role" name="role" type="text" value="" disabled>
+                </label>
+            </form>
+
+            <div class="btn-group">
+                <button type="button" class="btn-form edit-user-btn">Редагувати</button>
+                <button type="button" class="btn-form delete-user-btn">Видалити</button>
+            </div>
+        </div>
+    </div>
+</div>

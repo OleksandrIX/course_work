@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <title>Користувачі</title>
+</head>
+<body>
+<div class="page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page">Користувачі:</h2>
+            <div class="top-navbar-items">
+                <div class="documents">
+                    <li class="top-navbar-item">
+                        <a href="/documents/orders">Накази</a>
+                    </li>
+                    <li class="top-navbar-item">
+                        <a href="/documents/instructions">Розпорядження</a>
+                    </li>
+                    <li class="top-navbar-item selected">
+                        <a href="#">Користувачі</a>
+                    </li>
+                </div>
+                <li class="top-navbar-item">
+                    <button class="navbar-btn" onclick="logout();" type="submit">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="main-container">
+        <h1 class="plus-btn" onclick="openAddUserModal()">&plus;</h1>
+        <div class="users">
+            <div class="card-container">
+                <% for(const user of users){ %>
+                    <div class="card-user" onclick="openUserModal('<%= user.idUser%>')">
+                        <h1 class="name-card"><%= user.username%></h1>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../modal/user/show.ejs")%>
+<%- include("../modal/user/add.ejs")%>
+<%- include("../modal/user/edit.ejs")%>
+
+<script src="/public/js/logout.js"></script>
+<script src="/public/js/user.js"></script>
+<script src="/public/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <title>Розпорядження</title>
+</head>
+<body>
+<div class="page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page">Розпорядження:</h2>
+            <div class="top-navbar-items">
+                <div class="documents">
+                    <li class="top-navbar-item">
+                        <a href="/documents/orders">Накази</a>
+                    </li>
+                    <li class="top-navbar-item selected">
+                        <a href="#">Розпорядження</a>
+                    </li>
+                    <% if (isAdmin){ %>
+                        <li class="top-navbar-item">
+                            <a href="/users">Користувачі</a>
+                        </li>
+                    <% } %>
+                </div>
+                <li class="top-navbar-item">
+                    <button class="navbar-btn" onclick="logout();" type="submit">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="main-container">
+        <h1 class="plus-btn" onclick="openAddDocumentModal()">&plus;</h1>
+        <div class="instructions">
+            <% for(const instruction of instructions){ %>
+                <div class="document" onclick="location.href = '/documents/'+'<%= instruction.idDocument %>'">
+                    <p class="institution-name"><%= instruction.institutionName %></p>
+                    <p class="document-number"><%= instruction.documentNumber %></p>
+                    <p class="document-date"><%= instruction.documentDate %></p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include("../modal/document/add.ejs") %>
+
+<script src="/public/js/logout.js"></script>
+<script src="/public/js/document.js"></script>
+<script src="/public/js/index.js"></script>
+</body>
+</html>

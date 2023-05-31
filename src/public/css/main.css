@@ -1,0 +1,357 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.top-panel {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top-navbar {
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+}
+
+.name-page {
+    font-size: 30px;
+    width: 300px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.top-navbar-items {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.documents {
+    display: flex;
+    gap: 10px;
+}
+
+.top-navbar-item {
+    margin-left: 10px;
+}
+
+.top-navbar-item > a {
+    text-decoration: none;
+    color: #333;
+    transition: .25s;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.top-navbar-item.selected > a {
+    color: #007bff;
+}
+
+.top-navbar-item > a:hover {
+    color: #007bff;
+}
+
+.navbar-btn {
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.navbar-btn:hover {
+    background-color: rgba(0, 123, 255, 0.6);
+}
+
+.main-container {
+    background-color: #fff;
+    padding: 20px 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+}
+
+.banner-container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    height: 50%;
+    width: 80%;
+    border-radius: 20px;
+}
+
+.banner-message {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.card-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #007bff;
+    padding: 20px;
+    cursor: pointer;
+    transition: .30s;
+}
+
+.card-user:hover {
+    background-color: rgba(0, 123, 255, 0.7);
+}
+
+.name-card {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    width: 90%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.back-btn {
+    position: fixed;
+    top: 40px;
+    left: 30px;
+    font-size: 82px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.plus-btn {
+    position: fixed;
+    top: 60px;
+    right: 30px;
+    font-size: 82px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.plus-btn:hover, .back-btn:hover {
+    color: rgba(0, 123, 255, 0.7);
+}
+
+.orders {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.instructions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.document {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding: 10px 50px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #96aeda;
+    cursor: pointer;
+    transition: .20s;
+}
+
+.document:nth-child(even) {
+    background-color: #f1f1f1;
+    transition: .30s;
+}
+
+.document:hover {
+    background-color: rgba(150, 174, 218, 0.7);
+}
+
+.document:nth-child(even):hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.document p {
+    font-size: 24px;
+    color: #333;
+}
+
+.document .institution-name {
+    width: 300px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.document .document-number {
+    width: 300px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-style: italic;
+}
+
+.document .document-date {
+    color: #888;
+}
+
+.document-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.document-page {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 210mm;
+    height: 297mm;
+    padding: 20mm;
+}
+
+.document-content {
+    font-size: 12pt;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.header-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.institution-name{
+    word-break: break-word;
+    text-align: center;
+}
+
+.date-number-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.document-date{
+    font-style: italic;
+}
+
+.title-document{
+    margin-bottom: 20px;
+}
+
+.footer-container{
+    margin-top: 3cm;
+}
+
+.signature-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.signature-date{
+    font-style: italic;
+}
+
+.document-buttons{
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.document-buttons > button{
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: .30s;
+}
+
+.edit-document{
+    background-color: #016ac4;
+}
+
+.edit-document:hover{
+    background-color: rgba(1, 106, 196, 0.7);
+}
+
+.save-document{
+    background-color: #1B9B0AFF;
+}
+
+.save-document:hover{
+    background-color: rgba(27, 155, 10, 0.7);
+}
+
+.delete-document{
+    background-color: #BB1310FF;
+}
+
+.delete-document:hover{
+    background-color: rgba(187, 19, 16, 0.7);
+}
+
+.message{
+    font-size: 32px;
+    margin: 30px 0;
+}
+
+.message.error{
+    color: red;
+}
+
+.message.success{
+    color: green;
+}

@@ -1,0 +1,62 @@
+<div id="edit-document-modal" class="modal">
+    <div class="modal-content edit-document-modal-content">
+        <span class="close" onclick="closeEditDocumentModal()">&times;</span>
+        <p class="modal-name">Редагувати документ</p>
+        <div class="document-info">
+            <form id="edit-document-form" class="form">
+                <div class="form-container">
+                    <div class="column-left">
+                        <label for="institutionName">
+                            Назва установи:
+                            <input id="institutionName" name="institutionName" type="text"
+                                   autofocus required minlength="3" maxlength="255">
+                        </label>
+
+                        <label for="documentNumber">
+                            Номер документа:
+                            <input id="documentNumber" name="documentNumber" type="text"
+                                   required minlength="3" maxlength="255">
+                        </label>
+
+                        <label for="documentDate">
+                            Дата:
+                            <input id="documentDate" name="documentDate" type="date" required>
+                        </label>
+
+                        <label for="titleDocument">
+                            Заголовок документа:
+                            <input id="titleDocument" name="titleDocument" type="text"
+                                   required minlength="3" maxlength="255">
+                        </label>
+
+                        <label for="signature">
+                            Підпис:
+                            <input id="signature" name="signature" type="text"
+                                   required minlength="3" maxlength="255">
+                        </label>
+
+                        <label for="signatureDate">
+                            Дата підпису:
+                            <input id="signatureDate" name="signatureDate" type="date" required>
+                        </label>
+
+                        <label for="documentType">
+                            Тип документа:
+                            <select id="documentType" name="documentType" required>
+                                <option value="НАКАЗ">НАКАЗ</option>
+                                <option value="РОЗПОРЯДЖЕННЯ">РОЗПОРЯДЖЕННЯ</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="column-right">
+                        <label for="textDocument">
+                            Текст: <br>
+                            <textarea id="textDocument" name="textDocument" required></textarea>
+                        </label>
+                    </div>
+                </div>
+                <input class="btn-form edit-btn" type="submit" value="Редагувати">
+            </form>
+        </div>
+    </div>
+</div>
