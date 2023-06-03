@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/auth.css">
+    <title>Реєстрація</title>
+</head>
+<body>
+<div class="auth-page">
+    <div class="container">
+        <h1 class="auth-name">Реєстрація</h1>
+        <% if (errorMessage) { %>
+            <div class="error-message">
+                <%= errorMessage %>
+            </div>
+        <% } %>
+        <form class="auth-form" method="POST" action="/registration">
+            <label for="username">Ім'я:</label>
+            <input type="text" id="username" name="username"
+                   autofocus required minlength="4" maxlength="16"
+                   placeholder="Введіть ім'я користувача">
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password"
+                   required minlength="4"
+                   placeholder="Введіть пароль">
+            <input class="btn-auth" type="submit" value="Зареєструватися">
+        </form>
+        <a class="link" href="/login">Вже маєте обліковий запис? Увійти</a>
+    </div>
+</div>
+</body>
+</html>

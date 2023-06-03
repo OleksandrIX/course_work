@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <title>Домашня сторінка</title>
+</head>
+<body>
+<div class="page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page">О/с: <%= unit.unitName %></h2>
+            <div class="top-navbar-items">
+                <% if(isAdmin){ %>
+                    <li class="top-navbar-item">
+                        <button class="navbar-button" onclick="location.href='/'" type="button">Сторінка адміністратора
+                        </button>
+                    </li>
+                <% } %>
+                <li class="top-navbar-item">
+                    <button class="navbar-button" onclick="logout();" type="button">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="main-container">
+        <button class="btn add-personnel-btn" onclick="openAddPersonnelModal('<%= unit.id %>')">&plus;</button>
+        <div class="personnel-content">
+            <%- include("../includes/personnelTable.ejs", unit) %>
+        </div>
+    </div>
+</div>
+
+<%- include("../modals/personnel/add.ejs") %>
+<%- include("../modals/personnel/edit.ejs") %>
+
+<script src="/public/js/logout.js"></script>
+<script src="/public/js/fetches.js"></script>
+<script src="/public/js/main.js"></script>
+</body>
+</html>

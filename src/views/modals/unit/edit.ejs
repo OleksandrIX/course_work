@@ -1,0 +1,25 @@
+<div id="edit-unit-modal" class="modal">
+    <div class="modal-content edit-unit-content">
+        <span class="close" onclick="closeEditUnitModal()">&times;</span>
+        <h1 class="name-modal">Редагувати підрозділ</h1>
+        <div class="form-container">
+            <form id="edit-unit-form" class="form-modal">
+                <input type="hidden" name="idUnit" value="">
+                <div class="unit-input-container">
+                    <label class="modal-label" for="unitName">
+                        Назва підрозділу:
+                        <input id="unitName" name="unitName" type="text"
+                               autofocus required minlength="2" maxlength="24"
+                               placeholder="Введіть назву підрозділу">
+                    </label>
+
+                    <label class="modal-label" for="userId">
+                        Користувач:
+                        <select name="userId" id="userId" required></select>
+                    </label>
+                </div>
+                <input class="btn form-btn" type="submit" value="Редагувати">
+            </form>
+        </div>
+    </div>
+</div>

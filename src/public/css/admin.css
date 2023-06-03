@@ -1,0 +1,126 @@
+.unit-user-container {
+    display: flex;
+    justify-content: center;
+}
+
+.unit-user-navbar {
+    padding: 5px 30px;
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    background-color: #4c50ff;
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.units, .users {
+    position: relative;
+    cursor: pointer;
+}
+
+.units::after, .users::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all .25s ease;
+    transform: scaleX(0);
+}
+
+.units.selected::after {
+    transform: scaleX(1);
+}
+
+.users.selected::after {
+    transform: scaleX(1);
+}
+
+.units:hover::after, .users:hover::after {
+    transform: scaleX(1);
+}
+
+.units-container {
+    display: flex;
+    justify-content: center;
+}
+
+.users-container {
+    display: none;
+    justify-content: center;
+}
+
+.list-item {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.list-item.unit-list {
+    width: 80%;
+}
+
+.list-item.user-list {
+    margin-top: 20px;
+    width: 80%;
+    align-items: center;
+}
+
+.unit-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px;
+}
+
+.unit-container{
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+}
+
+.user-card {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.responsible {
+    display: flex;
+    gap: 10px;
+}
+
+.add-unit-btn {
+    width: 30%;
+    margin: 0 auto;
+    font-size: 28px;
+    background-color: rgba(34, 159, 16, 1);
+    color: white;
+}
+
+.add-unit-btn:hover {
+    background-color: rgba(34, 159, 16, 0.7);
+}
+
+.add-user-btn {
+    width: 30%;
+    margin: 0 auto;
+    font-size: 28px;
+    background-color: rgba(34, 159, 16, 1);
+    color: white;
+}
+
+.add-user-btn:hover {
+    background-color: rgba(34, 159, 16, 0.7);
+}
+
+.user-card > .action-container{
+    margin-right: 10px;
+}

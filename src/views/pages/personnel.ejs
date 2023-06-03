@@ -1,0 +1,282 @@
+<%
+const arrMilitaryRank = [
+    "Працівник ЗСУ",
+    {
+        "----Рядовий склад----": ["солдат", "старший солдат"],
+    },
+    {
+        "----Молодший сержантський склад----": ["молодший сержант", "сержант"],
+    },
+    {
+        "----Старший сержантський склад----": ["старший сержант", "головний сержант", "штаб-сержант"],
+    },
+    {
+        "----Вищий сержантський склад----": ["головний штаб-сержант", "майстер-сержант", "головний майстер-сержант"],
+    },
+    {
+        "----Молодший офіцерський склад----": ["молодший лейтенант", "лейтенант", "старший лейтенант", "капітан"],
+    },
+    {
+        "----Старший офіцерський склад----": ["майор", "підполковник", "полковник"]
+    }
+];
+%>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <title><%= personnel.lastName %> <%= personnel.firstName[0].toUpperCase() %>
+        .<%= personnel.middleName[0].toUpperCase() %>.</title>
+</head>
+<body>
+<div class="page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page"><%= personnel.lastName %> <%= personnel.firstName[0].toUpperCase() %>
+                .<%= personnel.middleName[0].toUpperCase() %>.</h2>
+            <div class="top-navbar-items">
+                <% if(isAdmin){ %>
+                    <li class="top-navbar-item">
+                        <button class="navbar-button" onclick="location.href='/'" type="button">Сторінка адміністратора
+                        </button>
+                    </li>
+                <% } %>
+                <li class="top-navbar-item">
+                    <button class="navbar-button" onclick="logout();" type="button">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="main-container">
+        <h1 class="btn back-btn" onclick="location.href = document.referrer">&#8592;</h1>
+        <div class="content">
+            <div class="personnel-info">
+                <h2 class="name-block">Загальна іфнормація</h2>
+                <form id="personnel-info" class="form-container">
+                    <label class="personnel-label" for="lastName">
+                        Прізвище:
+                        <input id="lastName" name="lastName" type="text"
+                               required minlength="2" maxlength="20" disabled
+                               placeholder="Введіть прізвище" value="<%= personnel.lastName %>">
+                    </label>
+
+                    <label class="personnel-label" for="firstName">
+                        Ім'я:
+                        <input id="firstName" name="firstName" type="text"
+                               required minlength="2" maxlength="20" disabled
+                               placeholder="Введіть ім'я" value="<%= personnel.firstName %>">
+                    </label>
+
+                    <label class="personnel-label" for="middleName">
+                        По батькові:
+                        <input id="middleName" name="middleName" type="text"
+                               required minlength="5" maxlength="26" disabled
+                               placeholder="Введіть по батькові" value="<%= personnel.middleName %>">
+                    </label>
+
+                    <label class="personnel-label" for="licenseNumber">
+                        Номер посвідчення:
+                        <input id="licenseNumber" name="licenseNumber" type="text"
+                               required minlength="4" disabled
+                               placeholder="Введіть номер посвідчення" value="<%= personnel.licenseNumber %>">
+                    </label>
+                </form>
+            </div>
+            <div class="personal-data">
+                <h2 class="name-block">Персональні дані</h2>
+                <form id="personal-data" class="form-container">
+                    <input type="hidden" name="personalDataId" value="<%= personnel.personal_datum.id %>">
+                    <div class="personal-data-container">
+                        <div class="left">
+                            <label class="personnel-label" for="militaryRank">
+                                Звання:
+                                <select name="militaryRank" id="militaryRank" required disabled>
+                                    <option value="Працівник ЗСУ"
+                                            <%= personnel.personal_datum.militaryRank === "Працівник ЗСУ" ? "selected" : "" %>>
+                                        Працівник ЗСУ
+                                    </option>
+                                    <optgroup label="----Рядовий склад----"></optgroup>
+                                    <option value="солдат"
+                                            <%= personnel.personal_datum.militaryRank === "солдат" ? "selected" : "" %>>
+                                        солдат
+                                    </option>
+                                    <option value="старший солдат"
+                                            <%= personnel.personal_datum.militaryRank === "старший солдат" ? "selected" : "" %>>
+                                        старший солдат
+                                    </option>
+                                    <optgroup label="----Молодший сержантський склад----"></optgroup>
+                                    <option value="молодший сержант"
+                                            <%= personnel.personal_datum.militaryRank === "молодший сержант" ? "selected" : "" %>>
+                                        молодший сержант
+                                    </option>
+                                    <option value="сержант"
+                                            <%= personnel.personal_datum.militaryRank === "сержант" ? "selected" : "" %>>
+                                        сержант
+                                    </option>
+                                    <optgroup label="----Старший сержантський склад----"></optgroup>
+                                    <option value="старший сержант"
+                                            <%= personnel.personal_datum.militaryRank === "старший сержант" ? "selected" : "" %>>
+                                        старший сержант
+                                    </option>
+                                    <option value="головний сержант"
+                                            <%= personnel.personal_datum.militaryRank === "головний сержант" ? "selected" : "" %>>
+                                        головний сержант
+                                    </option>
+                                    <option value="штаб-сержант"
+                                            <%= personnel.personal_datum.militaryRank === "штаб-сержант" ? "selected" : "" %>>
+                                        штаб-сержант
+                                    </option>
+                                    <optgroup label="----Вищий сержантський склад----"></optgroup>
+                                    <option value="головний штаб-сержант"
+                                            <%= personnel.personal_datum.militaryRank === "головний штаб-сержант" ? "selected" : "" %>>
+                                        головний штаб-сержант
+                                    </option>
+                                    <option value="майстер-сержант"
+                                            <%= personnel.personal_datum.militaryRank === "майстер-сержант" ? "selected" : "" %>>
+                                        майстер-сержант
+                                    </option>
+                                    <option value="головний майстер-сержант"
+                                            <%= personnel.personal_datum.militaryRank === "головний майстер-сержант" ? "selected" : "" %>>
+                                        головний майстер-сержант
+                                    </option>
+                                    <optgroup label="----Молодший офіцерський склад----"></optgroup>
+                                    <option value="молодший лейтенант"
+                                            <%= personnel.personal_datum.militaryRank === "молодший лейтенант" ? "selected" : "" %>>
+                                        молодший лейтенант
+                                    </option>
+                                    <option value="лейтенант"
+                                            <%= personnel.personal_datum.militaryRank === "лейтенант" ? "selected" : "" %>>
+                                        лейтенант
+                                    </option>
+                                    <option value="старший лейтенант"
+                                            <%= personnel.personal_datum.militaryRank === "старший лейтенант" ? "selected" : "" %>>
+                                        старший лейтенант
+                                    </option>
+                                    <option value="капітан"
+                                            <%= personnel.personal_datum.militaryRank === "капітан" ? "selected" : "" %>>
+                                        капітан
+                                    </option>
+                                    <optgroup label="----Старший офіцерський склад----"></optgroup>
+                                    <option value="майор"
+                                            <%= personnel.personal_datum.militaryRank === "майор" ? "selected" : "" %>>
+                                        майор
+                                    </option>
+                                    <option value="підполковник"
+                                            <%= personnel.personal_datum.militaryRank === "підполковник" ? "selected" : "" %>>
+                                        підполковник
+                                    </option>
+                                    <option value="полковник"
+                                            <%= personnel.personal_datum.militaryRank === "полковник" ? "selected" : "" %>>
+                                        полковник
+                                    </option>
+                                </select>
+                            </label>
+                            <label class="personnel-label" for="position">
+                                Посада:
+                                <input id="position" name="position" type="text"
+                                       required minlength="3" maxlength="30" disabled
+                                       placeholder="Введіть назву посади"
+                                       value="<%= personnel.personal_datum.position %>">
+                            </label>
+
+                            <label class="personnel-label" for="enlistmentDate">
+                                Дата призиву на службу:
+                                <input id="enlistmentDate" name="enlistmentDate" type="date"
+                                       required disabled
+                                       value="<%= personnel.personal_datum.enlistmentDate %>">
+                            </label>
+
+                            <label class="personnel-label" for="birthDate">
+                                Дата народження:
+                                <input id="birthDate" name="birthDate" type="date"
+                                       disabled
+                                       value="<%= personnel.personal_datum.birthDate %>">
+                            </label>
+                        </div>
+                        <div class="right">
+                            <label class="personnel-label" for="phone">
+                                Номер телефону:
+                                <input id="phone" name="phone" type="text"
+                                       minlength="17" maxlength="17" disabled
+                                       placeholder="+38(068)999-99-99"
+                                       value="<%= personnel.personal_datum.phone %>">
+                            </label>
+
+                            <label class="personnel-label" for="email">
+                                Електрона пошта:
+                                <input id="email" name="email" type="text"
+                                       minlength="13" maxlength="50" disabled
+                                       placeholder="example@gmail.com"
+                                       value="<%= personnel.personal_datum.email %>">
+                            </label>
+
+                            <div class="address">
+                                <label class="personnel-label" for="city">
+                                    Місто:
+                                    <input id="city" name="city" type="text"
+                                           minlength="2" maxlength="20" disabled
+                                           placeholder="Введіть місто"
+                                           value="<%= personnel.personal_datum.city %>">
+                                </label>
+
+                                <label class="personnel-label" for="address">
+                                    Адреса:
+                                    <input id="address" name="address" type="text"
+                                           minlength="5" maxlength="50" disabled
+                                           placeholder="Введіть адресу"
+                                           value="<%= personnel.personal_datum.address %>">
+                                </label>
+                            </div>
+                            <label class="personnel-label" for="religion">
+                                Віросповідання:
+                                <select name="religion" id="religion" disabled>
+                                    <option value="Християнство"
+                                            <%= personnel.personal_datum.religion === "Християнство" ? "selected" : "" %>>
+                                        Християнство
+                                    </option>
+                                    <option value="Буддизм"
+                                            <%= personnel.personal_datum.religion === "Буддизм" ? "selected" : "" %>>
+                                        Буддизм
+                                    </option>
+                                    <option value="Іслам"
+                                            <%= personnel.personal_datum.religion === "Іслам" ? "selected" : "" %>>
+                                        Іслам
+                                    </option>
+                                    <option value="Юдаїзм"
+                                            <%= personnel.personal_datum.religion === "Юдаїзм" ? "selected" : "" %>>
+                                        Юдаїзм
+                                    </option>
+                                    <option value="Пастафарианство"
+                                            <%= personnel.personal_datum.religion === "Пастафарианство" ? "selected" : "" %>>
+                                        Пастафарианство
+                                    </option>
+                                    <option value="Інша релігія"
+                                            <%= personnel.personal_datum.religion === "Інша релігія" ? "selected" : "" %>>
+                                        Інша релігія
+                                    </option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <input id="edit-personal-data" type="submit" class="btn edit-personal-data-btn" value="Редагувати">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../modals/personnel/add.ejs") %>
+<%- include("../modals/personnel/edit.ejs") %>
+
+<script src="/public/js/logout.js"></script>
+<script src="/public/js/fetches.js"></script>
+<script src="/public/js/main.js"></script>
+
+<script>
+
+</script>
+
+</body>
+</html>

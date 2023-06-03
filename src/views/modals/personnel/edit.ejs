@@ -1,0 +1,39 @@
+<div id="edit-personnel-modal" class="modal">
+    <div class="modal-content edit-personnel-content">
+        <span class="close" onclick="closeEditPersonnelModal()">&times;</span>
+        <h2 class="name-modal">Редагувати в/с</h2>
+        <div class="personnel-edit-form-container form-container">
+            <div class="error-message"></div>
+            <form id="edit-personnel-form" class="form-modal">
+                <input type="hidden" name="idPersonnel" value="">
+                <input type="hidden" name="unitId" value="">
+                <label class="modal-label" for="lastName">
+                    Прізвище:
+                    <input type="text" id="lastName" name="lastName"
+                           required minlength="2" maxlength="20"
+                           placeholder="Введіть прізвище">
+                </label>
+                <label class="modal-label" for="firstName">
+                    Ім'я:
+                    <input type="text" id="firstName" name="firstName"
+                           required minlength="2" maxlength="20"
+                           placeholder="Введіть ім'я">
+                </label>
+                <label class="modal-label" for="middleName">
+                    По батькові:
+                    <input type="text" id="middleName" name="middleName"
+                           required minlength="5" maxlength="26"
+                           placeholder="Введіть по батькові">
+                </label>
+
+                <label class="modal-label" for="licenseNumber">
+                    Номер посвідчення:
+                    <input type="text" id="licenseNumber" name="licenseNumber"
+                           required minlength="4"
+                           placeholder="Введіть номер посвідчення">
+                </label>
+                <input class="btn form-btn" type="submit" value="Редагувати">
+            </form>
+        </div>
+    </div>
+</div>

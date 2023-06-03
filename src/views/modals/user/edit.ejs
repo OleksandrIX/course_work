@@ -1,0 +1,50 @@
+<div id="edit-user-modal" class="modal">
+    <div class="modal-content edit-user-content">
+        <span class="close" onclick="closeEditUserModal()">&times;</span>
+        <h2 class="name-modal">Редагувати користувача</h2>
+        <div class="user-edit-form-container form-container">
+            <div class="error-message"></div>
+            <form id="edit-user-form" class="form-modal">
+                <input type="hidden" name="idUser" value="">
+                <div class="user-input-container">
+                    <div class="left">
+                        <label class="modal-label" for="username">
+                            Ім'я користувача:
+                            <input type="text" id="username" name="username"
+                                   autofocus required minlength="4" maxlength="16"
+                                   placeholder="Введіть ім'я користувача">
+                        </label>
+                        <label class="modal-label" for="licenseNumber">
+                            Номер посвідчення:
+                            <input type="text" id="licenseNumber" name="licenseNumber"
+                                   required minlength="4"
+                                   placeholder="Введіть номер посвідчення">
+                        </label>
+                    </div>
+
+                    <div class="right">
+                        <label class="modal-label" for="lastName">
+                            Прізвище:
+                            <input type="text" id="lastName" name="lastName"
+                                   required minlength="2" maxlength="20"
+                                   placeholder="Введіть прізвище">
+                        </label>
+                        <label class="modal-label" for="firstName">
+                            Ім'я:
+                            <input type="text" id="firstName" name="firstName"
+                                   required minlength="2" maxlength="20"
+                                   placeholder="Введіть ім'я">
+                        </label>
+                        <label class="modal-label" for="middleName">
+                            По батькові:
+                            <input type="text" id="middleName" name="middleName"
+                                   required minlength="5" maxlength="26"
+                                   placeholder="Введіть по батькові">
+                        </label>
+                    </div>
+                </div>
+                <input class="btn form-btn" type="submit" value="Редагувати">
+            </form>
+        </div>
+    </div>
+</div>

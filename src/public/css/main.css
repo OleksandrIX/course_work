@@ -1,0 +1,235 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Sans Serif Collection", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-panel {
+    z-index: 1;
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top-navbar {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name-page {
+    font-size: 24px;
+}
+
+.top-navbar-items {
+    display: flex;
+    align-items: center;
+}
+
+.top-navbar-item {
+    margin-left: 10px;
+}
+
+.navbar-button {
+    background-color: #243862;
+    border-radius: 10px;
+    color: #fff;
+    padding: 2px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .30s;
+}
+
+.navbar-button:hover {
+    background-color: rgba(36, 56, 98, 0.7);
+}
+
+.main-container {
+    padding: 20px;
+}
+
+.card {
+    border: 1px solid #f2f2f2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.8s ease;
+}
+
+.card:hover {
+    transition-delay: .4s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
+    font-size: 20px;
+    margin: 15px;
+    padding: 0 20px;
+}
+
+.btn {
+    cursor: pointer;
+    border: 0;
+    border-radius: 10px;
+    transition: .30s;
+}
+
+.personnel-content {
+    display: flex;
+    justify-content: center;
+}
+
+.personnel-table {
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.table-head-item,
+.table-body-item {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.table-head-item {
+    background-color: #f2f2f2;
+}
+
+.table-row {
+    cursor: pointer;
+}
+
+.table-row:hover {
+    background-color: #d1d1d1;
+}
+
+.add-personnel-btn {
+    position: fixed;
+    top: 40px;
+    right: 45px;
+    font-size: 80px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(34, 159, 16, 1);
+}
+
+.back-btn {
+    position: fixed;
+    top: 40px;
+    left: 20px;
+    font-size: 60px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #243862;
+}
+
+.back-btn:hover {
+    color: rgba(36, 56, 98, 0.7);
+}
+
+.action-container {
+    display: flex;
+    gap: 20px;
+}
+
+.action-container > .btn {
+    font-size: 28px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.edit-btn {
+    color: #4c50ff;
+}
+
+.edit-btn:hover {
+    color: rgba(76, 80, 255, 0.5);
+}
+
+.delete-btn {
+    color: #ff1a1a;
+}
+
+.delete-btn:hover {
+    color: rgba(255, 26, 26, 0.5);
+}
+
+.content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.personnel-info {
+    border: 1px solid #d2d2d2;
+    padding: 10px 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.personal-data {
+    border: 1px solid #d2d2d2;
+    padding: 10px 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.name-block {
+    text-align: center;
+}
+
+.personnel-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.personal-data-container {
+    display: flex;
+    gap: 20px;
+}
+
+.address {
+    display: flex;
+    gap: 20px;
+}
+
+#personal-data input,
+#personnel-info input {
+    padding-left: 10px;
+}
+
+#personal-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.edit-personal-data-btn {
+    width: 60%;
+    font-size: 22px;
+    background-color: #4c50ff;
+    color: white;
+}
+
+.edit-personal-data-btn:hover {
+    background-color: rgba(76, 80, 255, 0.7);
+}
+
+.edit-personal-data-btn.save {
+    background-color: #229F10FF;
+}
+
+.edit-personal-data-btn.save:hover {
+    background-color: rgba(34, 159, 16, 0.7);
+}

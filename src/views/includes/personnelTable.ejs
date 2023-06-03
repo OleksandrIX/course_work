@@ -1,0 +1,40 @@
+<table class="personnel-table">
+    <thead>
+    <tr>
+        <th class="table-head-item">№</th>
+        <th class="table-head-item">Прізвище</th>
+        <th class="table-head-item">Ім'я</th>
+        <th class="table-head-item">По батькові</th>
+        <th class="table-head-item">Номер посвіддчення</th>
+        <th class="table-head-item">Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% unit.personnels.forEach((personnel, index)=>{ %>
+        <tr class="table-row">
+            <td class="table-body-item"
+                onclick="openPersonnel('<%= personnel.id %>')"><%= index + 1 %></td>
+            <td class="table-body-item"
+                onclick="openPersonnel('<%= personnel.id %>')"><%= personnel.lastName %></td>
+            <td class="table-body-item"
+                onclick="openPersonnel('<%= personnel.id %>')"><%= personnel.firstName %></td>
+            <td class="table-body-item"
+                onclick="openPersonnel('<%= personnel.id %>')"><%= personnel.middleName %></td>
+            <td class="table-body-item"
+                onclick="openPersonnel('<%= personnel.id %>')"><%= personnel.licenseNumber %></td>
+            <td class="table-body-item">
+                <div class="action-container">
+                    <button class="btn edit-btn" type="button"
+                            onclick="openEditPersonnelModal('<%= personnel.id %>')">
+                        &#9998;
+                    </button>
+                    <button class="btn delete-btn" type="button"
+                            onclick="deletePersonnel('<%= personnel.id %>')">
+                        &#10006;
+                    </button>
+                </div>
+            </td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>

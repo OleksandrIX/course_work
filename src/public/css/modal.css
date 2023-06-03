@@ -1,0 +1,86 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    position: relative;
+}
+
+.close {
+    font-size: 30px;
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    color: #989898;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #3f3f3f;
+}
+
+.name-modal {
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.add-personnel-btn:hover {
+    color: rgba(34, 159, 16, 0.7);
+}
+
+.error-message {
+    color: #ff1a1a;
+    border: 1px solid #ff1a1a;
+    text-align: center;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.form-container{
+    padding: 20px 10px;
+}
+
+.form-modal{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.user-input-container{
+    display: flex;
+    gap: 15px;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-label{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-btn {
+    width: 60%;
+    margin: 0 auto;
+    font-size: 22px;
+    background-color: rgba(34, 159, 16, 1);
+    color: white;
+}
+
+.form-btn:hover{
+    background-color: rgba(34, 159, 16, 0.7);
+}

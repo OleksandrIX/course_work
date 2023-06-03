@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/admin.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <title>Сторінка адміністратора</title>
+</head>
+<body>
+<div class="page">
+    <div class="top-panel">
+        <ul class="top-navbar">
+            <h2 class="name-page">Сторінка адміністратора</h2>
+            <div class="top-navbar-items">
+                <li class="top-navbar-item">
+                    <button class="navbar-button" onclick="logout();" type="button">Вийти</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="main-container">
+        <div class="unit-user-container">
+            <ul class="unit-user-navbar">
+                <li class="units selected" onclick="selectUnits()">Підрозділи</li>
+                <li class="users" onclick="selectUsers()">Користувачі</li>
+            </ul>
+        </div>
+        <div class="units-container">
+            <div class="list-item unit-list">
+                <% units.forEach((unit, index)=>{ %>
+                    <div class="unit-card card">
+                        <div class="unit-container" onclick="openUnit('<%= unit.id %>')">
+                            <h2><%= index + 1 %>. <%= unit.unitName %></h2>
+                            <div class="responsible">
+                                <h2>Відповідальний:</h2>
+                                <h2><%= unit.user.firstName %> <%= unit.user.lastName.toUpperCase() %></h2>
+                            </div>
+                        </div>
+                        <div class="action-container">
+                            <button class="btn edit-btn" type="button"
+                                    onclick="openEditUnitModal('<%= unit.id %>')">
+                                &#9998;
+                            </button>
+                            <button class="btn delete-btn" type="button"
+                                    onclick="deleteUnit('<%= unit.id %>')">
+                                &#10006;
+                            </button>
+                        </div>
+                    </div>
+                <% }) %>
+                <button class="btn add-unit-btn" type="button" onclick="openAddUnitModal()">Додати</button>
+            </div>
+        </div>
+        <div class="users-container">
+            <div class="list-item user-list">
+                <% users.forEach((user, index)=>{ %>
+                    <div class="user-card card" onclick="">
+                        <h2><%= index + 1 %>. <%= user.firstName %> <%= user.lastName.toUpperCase() %></h2>
+                        <div class="action-container">
+                            <button class="btn edit-btn" type="button"
+                                    onclick="openEditUserModal('<%= user.id %>')">
+                                &#9998;
+                            </button>
+                            <button class="btn delete-btn" type="button"
+                                    onclick="deleteUser('<%= user.id %>')">
+                                &#10006;
+                            </button>
+                        </div>
+                    </div>
+                <% }) %>
+                <button class="btn add-user-btn" type="button" onclick="openAddUserModal()">Додати</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include("../modals/unit/add.ejs") %>
+<%- include("../modals/user/add.ejs") %>
+<%- include("../modals/unit/edit.ejs") %>
+<%- include("../modals/user/edit.ejs") %>
+
+<script src="/public/js/logout.js"></script>
+<script src="/public/js/fetches.js"></script>
+<script src="/public/js/admin.js"></script>
+</body>
+</html>
