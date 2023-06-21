@@ -1,0 +1,87 @@
+<div id="add-serviceman-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAddServicemanModal()">&times;</span>
+        <p class="modal-name">Додати військовослужбовця</p>
+        <form id="add-serviceman-form" class="form">
+            <input type="hidden" name="garrisonId" value="<%= garrison.id %>">
+            <div class="input-container">
+                <div class="wrapper">
+                    <div class="left-container">
+                        <div class="input-block">
+                            <label for="add-last-name">Прізвище:</label>
+                            <input type="text" id="add-last-name" name="lastName"
+                                   autofocus required minlength="2" maxlength="32"
+                                   placeholder="Введіть прізвище">
+                        </div>
+
+                        <div class="input-block">
+                            <label for="add-first-name">Ім'я:</label>
+                            <input type="text" id="add-first-name" name="firstName"
+                                   required minlength="2" maxlength="32"
+                                   placeholder="Введіть ім'я">
+                        </div>
+
+                        <div class="input-block">
+                            <label for="add-middle-name">По батькові:</label>
+                            <input type="text" id="add-middle-name" name="middleName"
+                                   required minlength="5" maxlength="32"
+                                   placeholder="Введіть по батькові">
+                        </div>
+
+                        <div class="input-block">
+                            <label for="add-position">Посада:</label>
+                            <input type="text" id="add-position" name="position"
+                                   required minlength="4" maxlength="32"
+                                   placeholder="Введіть посаду">
+                        </div>
+                    </div>
+                    <div class="right-container">
+                        <div class="input-block">
+                            <label for="add-military-rank">Військове звання:</label>
+                            <select name="militaryRank" id="add-military-rank" required>
+                                <option value="солдат">солдат</option>
+                                <option value="старший солдат">старший солдат</option>
+                                <optgroup label="-------------"></optgroup>
+                                <option value="молодший сержант">молодший сержант</option>
+                                <option value="сержант">сержант</option>
+                                <optgroup label="-------------"></optgroup>
+                                <option value="старший сержант">старший сержант</option>
+                                <option value="головний сержант">головний сержант</option>
+                                <option value="штаб-сержант">штаб-сержант</option>
+                                <optgroup label="-------------"></optgroup>
+                                <option value="майстер-сержант">майстер-сержант</option>
+                                <option value="старший майстер-сержант">старший майстер-сержант</option>
+                                <option value="головний майстер-сержант">головний майстер-сержант</option>
+                                <optgroup label="-------------"></optgroup>
+                                <option value="молодший лейтенант">молодший лейтенант</option>
+                                <option value="лейтенант">лейтенант</option>
+                                <option value="старший лейтенант">старший лейтенант</option>
+                                <option value="капітан">капітан</option>
+                                <optgroup label="-------------"></optgroup>
+                                <option value="майор">майор</option>
+                                <option value="підполковник">підполковник</option>
+                                <option value="полковник">полковник</option>
+                            </select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="add-current-military-unit">Оберіть в/ч гарнізону:</label>
+                            <select name="currentMilitaryUnitId" id="add-current-military-unit"></select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="add-garrison">Оберіть гарнізон з якого прибув в/с:</label>
+                            <select name="garrisons" id="add-garrison" required></select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="add-permanent-military-unit">Оберіть в/ч з якого прибув в/с:</label>
+                            <select name="permanentMilitaryUnitId" id="add-permanent-military-unit" required></select>
+                        </div>
+                    </div>
+                </div>
+                <input class="form-button add-button" type="submit" value="Додати">
+            </div>
+        </form>
+    </div>
+</div>

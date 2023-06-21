@@ -1,0 +1,26 @@
+<div id="add-user-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAddUserModal()">&times;</span>
+        <p class="modal-name">Додати користувача</p>
+        <div class="error-message"></div>
+        <form id="add-user-form" class="form">
+            <div class="input-container">
+                <div class="input-block">
+                    <label for="add-username">Ім'я користувача:</label>
+                    <input type="text" id="add-username" name="username"
+                           autofocus required minlength="4" maxlength="16"
+                           placeholder="Введіть ім'я користувача">
+                </div>
+
+                <div class="input-block">
+                    <label for="add-password">Пароль:</label>
+                    <input type="password" id="add-password" name="password"
+                           required minlength="4"
+                           placeholder="Введіть пароль">
+                </div>
+            </div>
+
+            <input class="form-button add-button" type="submit" value="Додати">
+        </form>
+    </div>
+</div>

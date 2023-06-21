@@ -1,0 +1,24 @@
+<div id="add-garrison-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAddGarrisonModal()">&times;</span>
+        <p class="modal-name">Додати гарнізон</p>
+        <div class="error-message"></div>
+        <form id="add-garrison-form" class="form">
+            <div class="input-container">
+                <div class="input-block">
+                    <label for="add-name-garrison">Назва гарнізону:</label>
+                    <input type="text" id="add-name-garrison" name="nameGarrison"
+                           autofocus required minlength="10" maxlength="64"
+                           placeholder="Введіть назву гарнізону">
+                </div>
+
+                <div class="input-block">
+                    <label for="add-user-id">Виберіть особу відповідальну за цей гарнізон:</label>
+                    <select name="userId" id="add-user-id" required></select>
+                </div>
+
+                <input class="form-button add-button" type="submit" value="Додати">
+            </div>
+        </form>
+    </div>
+</div>

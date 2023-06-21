@@ -1,0 +1,142 @@
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgb(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    max-width: 33%;
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 5px 40px;
+}
+
+.modal-name {
+    margin-top: 5px;
+    text-align: center;
+    top: 10px;
+    font-size: 1.5rem;
+}
+
+.close {
+    z-index: 2;
+    position: absolute;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.close:hover {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.error-message{
+    display: none;
+    max-width: 100%;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #B92E4D;
+    color: #B92E4D;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 10px;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.input-block{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 26px;
+}
+
+.input-block input,
+.input-block select{
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.form-button{
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 38px;
+    border: 0;
+    background-color: rgba(0,0,0,0);
+}
+
+.add-button{
+    padding: 5px 30px;
+    color: #E0FFEF;
+    background-color: #38C379;
+    border-radius: 10px;
+}
+
+.add-button:hover{
+    background-color: rgba(56, 195, 121, 0.7);
+}
+
+.edit-button{
+    padding: 5px 20px;
+    background-color: #2C81CF;
+    color: #e5eefd;
+    border-radius: 10px;
+}
+
+.edit-button:hover{
+    background-color: rgba(44, 129, 207, 0.7);
+}
+
+.save-button{
+    padding: 5px 20px;
+    background-color: #07FF72;
+    color: #e5eefd;
+    border-radius: 10px;
+}
+
+.save-button:hover{
+    background-color: rgba(7, 255, 114, 0.7);
+}
+
+.delete-button{
+    padding: 5px 20px;
+    background-color: #cf2828;
+    color: #e5eefd;
+    border-radius: 10px;
+}
+
+.delete-button:hover{
+    background-color: rgba(207, 40, 40, 0.7);
+}
+
+#add-serviceman-modal  .modal-content{
+    max-width: 70%;
+}
+
+.wrapper{
+    display: flex;
+    gap: 20px;
+}

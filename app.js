@@ -12,6 +12,9 @@ app.use("/public", express.static(path.join(__dirname, "src/public")));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+const authMiddleware = require("./src/middleware/auth");
+app.use(authMiddleware);
+
 const routes = require("./src/routes");
 app.use(routes);
 

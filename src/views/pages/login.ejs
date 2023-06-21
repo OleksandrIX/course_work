@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/auth.css">
+    <title>Вхід</title>
+</head>
+<body>
+<div class="page">
+    <div class="auth-wrapper">
+        <h1 class="auth-name">Вхід</h1>
+
+        <% if (errorMessage) { %>
+            <div class="error-message">
+                <%= errorMessage %>
+            </div>
+        <% } %>
+
+        <form class="auth-form" method="POST" action="/login">
+                <div class="input-container">
+                <div class="input-block">
+                    <label for="username">Ім'я користувача:</label>
+                    <input type="text" id="username" name="username"
+                           autofocus required minlength="4" maxlength="24"
+                           placeholder="Введіть ім'я користувача">
+                </div>
+
+                <div class="input-block">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password"
+                           required minlength="4"
+                           placeholder="Введіть пароль">
+                </div>
+
+                <input class="btn-auth" type="submit" value="Увійти">
+            </div>
+        </form>
+
+        <a class="link" href="/registration">Ще не зареєстровані? Зареєструватися</a>
+    </div>
+</div>
+</body>
+</html>

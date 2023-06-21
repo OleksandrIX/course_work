@@ -1,0 +1,285 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Arial Rounded MT Bold", sans-serif;
+}
+
+.page {
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px 0 25px;
+}
+
+.page-name {
+    font-size: 30px;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #f3f3f3;
+    border-bottom: 1px solid #F2F2F2;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.top-navbar {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+    list-style: none;
+}
+
+.navbar-button {
+    font-size: 28px;
+    padding: 6px 15px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #0D6EFD;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: .20s;
+}
+
+.navbar-button:hover {
+    background-color: rgba(13, 110, 253, 0.7);
+}
+
+.icons {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon {
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.icon:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.garrison-h {
+    margin-top: 20px;
+    font-size: 48px;
+    text-align: center;
+
+}
+
+.garrison-cards {
+    text-align: center;
+    margin: 30px 30px 0 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.garrison-card {
+    background-color: #8452be;
+    padding: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.garrison-card:hover {
+    background-color: rgba(132, 82, 190, 0.7);
+}
+
+.garrison-card > p {
+    font-size: 30px;
+    color: #FFFFFF;
+}
+
+.garrison-container {
+    margin: 20px 30px;
+    display: flex;
+    gap: 30px;
+}
+
+.garrison-container .left-sidebar {
+    position: sticky;
+    top: 100px;
+    min-width: 200px;
+    height: fit-content;
+    padding: 20px 10px;
+    border: 1px solid #d7d7d7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-military-units > h2 {
+    font-size: 30px;
+}
+
+.list-military-units > ul {
+    margin-top: 10px;
+    list-style: none;
+}
+
+.list-military-units li {
+    text-indent: 10px;
+}
+
+.list-military-units p {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.list-military-units p > span {
+    font-weight: bold;
+    color: #03005C;
+}
+
+.garrison-container .main {
+    flex-grow: 1;
+    height: fit-content;
+}
+
+.servicemen {
+    border: 1px solid #7F7F7F;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button {
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    width: fit-content;
+    cursor: pointer;
+}
+
+.button.add {
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 24px;
+    background-color: #009235;
+    color: #FFFFFF;
+}
+
+.button.add:hover {
+    background-color: rgba(0, 146, 53, 0.7);
+}
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-head {
+    background-color: #f0f0f0;
+}
+
+.table-head-row {
+    font-weight: bold;
+}
+
+.table-head-item {
+    font-size: 24px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.table-body-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.table-body-row {
+    cursor: pointer;
+}
+
+.table-body-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-body-row:hover {
+    background-color: #e0e0e0;
+}
+
+.empty-table {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 28px;
+    color: #49726a;
+    font-weight: bold;
+}
+
+.empty-military-unit {
+    padding: 20px 0;
+    text-align: center;
+    color: #49726a;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.military-unit {
+    cursor: pointer;
+}
+
+.military-unit:hover {
+    color: #5B5A5A;
+}
+
+.serviceman-page{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container-serviceman {
+    margin: 50px 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    row-gap: 20px;
+    align-items: center;
+}
+
+.serviceman {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 2;
+}
+
+.current-location {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.permanent-location {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+}
+
+.main-container-serviceman > div > h2{
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.main-container-serviceman > div > form {
+    border-radius: 10px;
+    border: 1px solid #adadad;
+}
+
+.custom-form{
+    padding: 20px;
+}

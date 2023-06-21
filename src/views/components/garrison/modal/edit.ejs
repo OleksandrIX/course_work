@@ -1,0 +1,25 @@
+<div id="edit-garrison-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditGarrisonModal()">&times;</span>
+        <p class="modal-name">Редагувати гарнізон</p>
+        <div class="error-message"></div>
+        <form id="edit-garrison-form" class="form">
+            <input type="hidden" name="id" value="">
+            <div class="input-container">
+                <div class="input-block">
+                    <label for="edit-name-garrison">Назва гарнізону:</label>
+                    <input type="text" id="edit-name-garrison" name="nameGarrison"
+                           autofocus required minlength="10" maxlength="64"
+                           placeholder="Введіть назву гарнізону">
+                </div>
+
+                <div class="input-block">
+                    <label for="edit-user-id">Виберіть особу відповідальну за цей гарнізон:</label>
+                    <select name="userId" id="edit-user-id" required></select>
+                </div>
+
+                <input class="form-button add-button" type="submit" value="Редагувати">
+            </div>
+        </form>
+    </div>
+</div>

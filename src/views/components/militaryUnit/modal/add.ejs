@@ -1,0 +1,20 @@
+<div id="add-military-unit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAddMilitaryUnitModal()">&times;</span>
+        <p class="modal-name">Додати в/ч</p>
+        <div class="error-message"></div>
+        <form id="add-military-unit-form" class="form">
+            <input type="hidden" name="garrisonId" value="<%= garrisonId%>">
+            <div class="input-container">
+                <div class="input-block">
+                    <label for="add-name-military-unit">Назва в/ч:</label>
+                    <input type="text" id="add-name-military-unit" name="nameMilitaryUnit"
+                           autofocus required minlength="5" maxlength="5"
+                           placeholder="Введіть назву в/ч">
+                </div>
+
+                <input class="form-button add-button" type="submit" value="Додати">
+            </div>
+        </form>
+    </div>
+</div>

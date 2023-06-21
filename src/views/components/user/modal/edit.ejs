@@ -1,0 +1,20 @@
+<div id="edit-user-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditUserModal()">&times;</span>
+        <p class="modal-name">Редагувати користувача</p>
+        <div class="error-message"></div>
+        <form id="edit-user-form" class="form">
+            <input type="hidden" name="id" value="">
+            <div class="input-container">
+                <div class="input-block">
+                    <label for="edit-username">Ім'я користувача:</label>
+                    <input type="text" id="edit-username" name="username"
+                           autofocus required minlength="4" maxlength="16"
+                           placeholder="Введіть ім'я користувача">
+                </div>
+            </div>
+
+            <input class="form-button edit-button" type="submit" value="Редагувати">
+        </form>
+    </div>
+</div>

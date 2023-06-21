@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/modal.css">
+    <title><%= name %></title>
+</head>
+<body>
+<div class="page">
+    <nav class="navbar">
+        <h2 class="page-name"><%= name %></h2>
+        <ul class="top-navbar">
+            <li class="top-navbar-item">
+                <button class="navbar-button" onclick="location.href = '/'" type="button">Гарнізони</button>
+            </li>
+            <li class="top-navbar-item">
+                <button class="navbar-button" onclick="logout();" type="button">Вийти</button>
+            </li>
+        </ul>
+    </nav>
+    <div class="main-container">
+        <div class="garrison-container">
+            <div class="left-sidebar">
+                <div class="list-military-units">
+                    <h2>Список в/ч:</h2>
+                    <ul>
+                        <% if(militaryUnits.length !== 0) { %>
+                            <% militaryUnits.forEach((militaryUnit, index)=>{ %>
+                                <li class="list-item">
+                                    <p class="military-unit"
+                                       onclick="openEditMilitaryUnitModal(<%= militaryUnit.id %>)">
+                                        <span><%= index + 1 %>.</span> <%= militaryUnit.nameMilitaryUnit %>
+                                    </p>
+                                </li>
+                            <% }) %>
+                        <% }else{ %>
+                            <p class="empty-military-unit">Немає в/ч</p>
+                        <% } %>
+                    </ul>
+                </div>
+                <button class="button add" onclick="openAddMilitaryUnitModal()">Додати в/ч</button>
+            </div>
+            <div class="main">
+                <div class="servicemen">
+                    <%- include("../components/serviceman/table.ejs", servicemen) %>
+                </div>
+                <div class="buttons">
+                    <button class="button add" onclick="openAddServicemanModal()">Додати в/c</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modals">
+    <div class="military-unit-modals">
+        <%- include("../components/militaryUnit/modal/add.ejs", {garrisonId: garrison.id}) %>
+        <%- include("../components/militaryUnit/modal/edit.ejs", {garrisonId: garrison.id}) %>
+    </div>
+    <div class="serviceman-modals">
+        <%- include("../components/serviceman/modal/add.ejs", {garrisonId: garrison.id}) %>
+    </div>
+</div>
+
+<script src="/public/js/index.js"></script>
+<script src="/public/js/militaryUnit.js"></script>
+<script src="/public/js/requests.js"></script>
+<script src="/public/js/modal.js"></script>
+<script src="/public/js/serviceman.js"></script>
+</body>
+</html>

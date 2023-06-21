@@ -1,0 +1,31 @@
+<table class="table">
+    <thead class="table-head">
+    <tr class="table-head-row">
+        <th class="table-head-item">№</th>
+        <th class="table-head-item">Прізвище</th>
+        <th class="table-head-item">Ім'я</th>
+        <th class="table-head-item">По батькові</th>
+        <th class="table-head-item">Військове звання</th>
+        <th class="table-head-item">Посада</th>
+    </tr>
+    </thead>
+    <tbody class="table-body">
+
+    <% if(servicemen.length !== 0) { %>
+        <% servicemen.forEach((serviceman, index)=>{ %>
+        <tr class="table-body-row" onclick="location.href += '/servicemen/<%= serviceman.id %>'">
+            <td class="table-body-item"><%= index + 1 %></td>
+            <td class="table-body-item"><%= serviceman.lastName %></td>
+            <td class="table-body-item"><%= serviceman.firstName %></td>
+            <td class="table-body-item"><%= serviceman.middleName %></td>
+            <td class="table-body-item"><%= serviceman.militaryRank %></td>
+            <td class="table-body-item"><%= serviceman.position %></td>
+        </tr>
+        <% }) %>
+    <% }else{ %>
+        <tr>
+            <td colspan="7" class="empty-table">Немає військовослужбовців</td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>

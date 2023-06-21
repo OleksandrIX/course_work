@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <title>Домашня сторінка</title>
+</head>
+<body>
+<div class="page">
+    <nav class="navbar">
+        <h2 class="page-name"><%= username %></h2>
+        <ul class="top-navbar">
+            <li class="top-navbar-item">
+                <button class="navbar-button" onclick="logout();" type="button">Вийти</button>
+            </li>
+        </ul>
+    </nav>
+    <div class="main-container">
+        <h2 class="garrison-h">Гарнізони</h2>
+        <div class="garrison-cards">
+            <% garrisons.forEach((garrison)=>{ %>
+                <div class="garrison-card" onclick="location.href = '/garrisons/<%= garrison.id %>'">
+                    <p><%= garrison.nameGarrison %></p>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<script src="/public/js/index.js"></script>
+</body>
+</html>

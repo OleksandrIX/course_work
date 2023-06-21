@@ -1,0 +1,91 @@
+.main-container {
+    margin: 25px 30px;
+    gap: 30px;
+    display: grid;
+    grid-template-columns: 40% 50%;
+    justify-content: center;
+}
+
+.header-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.name-list {
+    text-align: center;
+    font-size: 30px;
+    color: #03005C;
+}
+
+.user-list, .garrison-list, .military-units {
+    list-style: none;
+}
+
+.list-item {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.military-units {
+    height: 0;
+    overflow: hidden;
+    transition: height 5s ease;
+}
+
+.military-units.selected {
+    height: auto;
+    padding: 10px 30px;
+}
+
+.garrison-list, .user-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.garrison-list > .list-item > p {
+    width: 70%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.list-item p > span {
+    font-weight: bold;
+    color: #03005C;
+}
+
+.military-units .list-item strong{
+    color: #29424c;
+}
+
+.garrison-list > .list-item,
+.user-list > .list-item {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px 25px;
+}
+
+.garrison-list > .list-item:hover,
+.user-list > .list-item:hover {
+    background-color: #d7d7d7;
+}
+
+.empty-garrison{
+    color: #49726a;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.military-units{
+    position: relative;
+}
+
+.show-icon{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

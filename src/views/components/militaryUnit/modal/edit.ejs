@@ -1,0 +1,25 @@
+<div id="edit-military-unit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditMilitaryUnitModal()">&times;</span>
+        <p class="modal-name">Редагувати в/ч</p>
+        <div class="error-message"></div>
+        <form id="edit-military-unit-form" class="form">
+            <input type="hidden" name="id" value="">
+            <input type="hidden" name="garrisonId" value="<%= garrisonId %>">
+            <div class="input-container">
+                <div class="input-block">
+                    <label for="edit-name-military-unit">Назва в/ч:</label>
+                    <input type="text" id="edit-name-military-unit" name="nameMilitaryUnit"
+                           autofocus required minlength="5" maxlength="5"
+                           placeholder="Введіть назву в/ч">
+                </div>
+
+                <div class="buttons">
+                    <input class="form-button edit-button" type="submit" value="Редагувати">
+                    <input id="delete-military-unit"
+                           class="form-button delete-button" type="submit" value="Видалити">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
