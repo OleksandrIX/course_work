@@ -1,6 +1,6 @@
 import React from "react";
-import {Box} from "@mui/material";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { Box } from "@mui/material";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -13,9 +13,9 @@ const App = () => {
         }}>
             <BrowserRouter>
                 <Routes>
-                    <Route path={"/"} element={<Home/>}/>
-                    <Route path={"/login"} element={<Login/>}/>
-                    <Route path={"/registration"} element={<Registration/>}/>
+                    <Route path={"/"} element={<Home />} />
+                    <Route path={"/login"} element={<Login />} />
+                    <Route path={"/registration"} element={<Registration />} />
                 </Routes>
             </BrowserRouter>
         </Box>

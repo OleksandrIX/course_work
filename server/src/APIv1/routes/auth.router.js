@@ -1,7 +1,10 @@
 const router = require("express").Router();
 const AuthController = require("../controllers/auth.controller");
+const {checkNotAuthenticated, checkAuthenticated} = require("../../utils/auth.util");
 
-router.post("/login", AuthController.login);
-router.post("/registration", AuthController.registration);
+router.get("/check", AuthController.check);
+router.post("/login", checkNotAuthenticated, AuthController.login);
+router.post("/registration", checkNotAuthenticated, AuthController.registration);
+router.delete("/logout", checkAuthenticated, AuthController.logout);
 
 module.exports = router;

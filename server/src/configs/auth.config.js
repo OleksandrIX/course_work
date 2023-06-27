@@ -8,8 +8,8 @@ module.exports = (passport, {findById, findByUsername}) => {
             if (!user) return done(null, false, {message: "Користувача з таким ім'ям не знайдено"});
             if (await bcrypt.compare(password, user.password)) return done(null, user);
             else return done(null, false, {message: "Неправильний пароль"});
-        } catch (error) {
-            return done(error);
+        } catch (err) {
+            return done(err);
         }
     };
 

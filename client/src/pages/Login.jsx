@@ -1,46 +1,50 @@
-import React, {useEffect, useState} from "react";
-
-import {AppBar, Box, Toolbar, Button, TextField, Typography, Link} from "@mui/material";
-import {loginURL, host} from "../util/api";
-import Auth from "../util/auth";
-
-import {ToastContainer, toast} from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {errorToastOptions} from "../util/toast.options";
-import axios from "axios";
+
+import Header from '../components/Header';
+import Auth from "../util/auth";
+import { errorToastOptions } from "../util/toast.options";
+import LoginForm from "../components/auth/LoginForm";
 
 const styleBody = {
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: "column",
     height: "100vh"
 };
 
-const styleForm = {
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
-    width: "500px",
-    padding: "20px 10px",
-    borderRadius: "10px",
+const styleFormBody = {
+    flex: "1",
+    margin: "50px auto"
 };
 
 const Login = () => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    useEffect(() => {
+        document.title = "Вхід";
+        Auth.checkAuth().then(() => navigate("/")).catch(()=>console.log());
+    }, [navigate]);
+
+
     const handleLogin = (event) => {
         event.preventDefault();
-        const loginData = {username, password};
-        const loginPromises = Auth.login(loginURL, loginData);
+        const loginData = { username, password };
+        const loginPromises = Auth.login(loginData);
 
         loginPromises
-            .then((data) => {
-                console.log(data);
+            .then(() => {
+                navigate("/");
             })
             .catch((err) => {
-                const {message} = err.response.data;
-
+                const { message } = err.response.data;
+                if (err.response.status === 403) {
+                    navigate("/");
+                }
                 if (toast.isActive("error-toast")) {
                     toast.update("error-toast", {
                         render: message,
@@ -55,49 +59,14 @@ const Login = () => {
             });
     };
 
-    useEffect(() => {
-        document.title = "Вхід";
-    }, [username]);
-
-
     return (
-        <div>
-            <AppBar>
-                <Toolbar>
-                    <Typography variant="h5"> Облік лікарських засобів військового шпиталю</Typography>
-                </Toolbar>
-            </AppBar>
-            <Box sx={styleBody}>
-                <Box sx={styleForm} component="form" onSubmit={handleLogin}>
-                    <Toolbar sx={{margin: "auto", fontSize: "40px"}} component="h1">
-                        Вхід
-                    </Toolbar>
-                    <TextField name="username"
-                               type="text"
-                               label="Username"
-                               variant="outlined"
-                               required={true}
-                               autoFocus={true}
-                               onChange={(e) => setUsername(e.target.value)}/>
-                    <TextField name="password"
-                               type="password"
-                               label="Password"
-                               variant="outlined"
-                               required={true}
-                               onChange={(e) => setPassword(e.target.value)}/>
-                    <Button sx={{fontWeight: "bold", fontSize: "24px"}}
-                            variant="contained"
-                            color="primary"
-                            type="submit">
-                        Увійти
-                    </Button>
-                    <Link sx={{fontSize: "20px"}} href="/registration">
-                        Зареєструватися
-                    </Link>
-                </Box>
+        <Box sx={styleBody}>
+            <Header isAuth={false} />
+            <Box component="main" sx={styleFormBody}>
+                <LoginForm handleLogin={handleLogin} setUsername={setUsername} setPassword={setPassword} />
+                <ToastContainer />
             </Box>
-            <ToastContainer limit={3}/>
-        </div>
+        </Box>
     );
 };
 
