@@ -1,23 +1,18 @@
 const router = require("express").Router();
-const {checkAuthenticated} = require("../../utils/auth.util");
 
 const AuthRouter = require("./auth.router");
 router.use("/auth", AuthRouter);
 
-router.get("/main", checkAuthenticated, (req, res) => {
-    const arr = [
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-        {a: 1, b: 2},
-    ];
+const UserRouter = require("./user.router");
+router.use("/users", UserRouter);
 
-    console.log(req.session);
-    console.log(req.user);
-    res.json({arr});
-});
+const AddressRouter = require("./address.router");
+router.use("/addresses", AddressRouter);
+
+const HospitalRouter = require("./hospital.router");
+router.use("/hospitals", HospitalRouter);
+
+const MedicineRouter = require("./medicine.router");
+router.use("/medicines", MedicineRouter);
 
 module.exports = router;

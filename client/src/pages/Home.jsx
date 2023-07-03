@@ -1,27 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import Auth from "../util/auth";
 import { Box } from "@mui/material";
+
+import Auth from "../api/requests/auth.request";
 import Header from '../components/Header';
+import Loader from '../components/Loader';
 
 const styleBody = {
     display: "flex",
     flexDirection: "column",
-    height: "100vh"
+    minHeight: "100vh"
 };
 
 const Home = () => {
     const navigate = useNavigate();
+    const [isAuth, setIsAuth] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        Auth.checkAuth().catch(() => navigate("/login"));
+        document.title = "Облік лікарських засобів";
+        Auth.checkAuth()
+            .then(() => setIsAuth(true))
+            .catch(() => navigate("/login"))
+            .finally(() => setIsLoading(false));
     }, [navigate]);
+
+    if (isLoading) return (<Loader />);
 
     return (
         <Box sx={styleBody}>
-            <Header isAuth={true} />
-            Home
+            <Header isAuth={isAuth} />
+            <Box sx={{ margin: "10px", textAlign: "justify" }}>
+                
+            </Box>
         </Box>
     );
 };

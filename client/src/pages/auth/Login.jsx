@@ -4,10 +4,11 @@ import { Box } from "@mui/material";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Header from '../components/Header';
-import Auth from "../util/auth";
-import { errorToastOptions } from "../util/toast.options";
-import LoginForm from "../components/auth/LoginForm";
+import Auth from "../../api/requests/auth.request";
+import { errorToastOptions } from "../../util/toast.options";
+import Header from '../../components/Header';
+import LoginForm from "../../components/auth/LoginForm";
+import Loader from "../../components/Loader";
 
 const styleBody = {
     display: "flex",
@@ -24,10 +25,14 @@ const Login = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         document.title = "Вхід";
-        Auth.checkAuth().then(() => navigate("/")).catch(()=>console.log());
+        Auth.checkAuth()
+            .then(() => navigate("/"))
+            .catch(() => { })
+            .finally(() => setIsLoading(false));
     }, [navigate]);
 
 
@@ -37,9 +42,7 @@ const Login = () => {
         const loginPromises = Auth.login(loginData);
 
         loginPromises
-            .then(() => {
-                navigate("/");
-            })
+            .then(() => navigate("/"))
             .catch((err) => {
                 const { message } = err.response.data;
                 if (err.response.status === 403) {
@@ -58,6 +61,8 @@ const Login = () => {
                 }
             });
     };
+
+    if (isLoading) return (<Loader />);
 
     return (
         <Box sx={styleBody}>

@@ -1,11 +1,11 @@
-module.exports.errorToastOptions = {
+export const errorToastOptions = {
     position: "bottom-right",
     autoClose: 8000,
     draggable: false,
     pauseOnHover: false,
 };
 
-module.exports.successToastOptions = {
+export const successToastOptions = {
     position: "bottom-right",
     autoClose: 8000,
     draggable: false,

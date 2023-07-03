@@ -21,16 +21,14 @@ const LoginForm = ({ handleLogin, setUsername, setPassword }) => {
         <Box sx={styleForm} component="form" onSubmit={handleLogin}>
             <Typography sx={{ margin: "auto", fontSize: "40px", fontWeight: "bold" }} component="h1">Вхід</Typography>
 
-            <TextField name="username"
-                type="text"
+            <TextField type="text"
                 label="Username"
                 variant="outlined"
                 required={true}
                 autoFocus={true}
                 onChange={(e) => setUsername(e.target.value)} />
 
-            <TextField name="password"
-                type={showPassword ? "text" : "password"}
+            <TextField name="password" type={showPassword ? "text" : "password"}
                 label="Password"
                 variant="outlined"
                 required={true}

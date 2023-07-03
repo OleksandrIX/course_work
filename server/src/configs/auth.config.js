@@ -14,6 +14,6 @@ module.exports = (passport, {findById, findByUsername}) => {
     };
 
     passport.use(new LocalStrategy({usernameField: "username"}, authenticateUser));
-    passport.serializeUser((user, done) => done(null, user.id));
+    passport.serializeUser((user, done) => done(null, user.idUser));
     passport.deserializeUser((id, done) => done(null, findById(id)));
 };

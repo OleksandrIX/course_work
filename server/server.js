@@ -1,5 +1,6 @@
 require("dotenv").config();
 require("./src/db/connect.db");
+require("./src/db/sync.db");
 
 const app = require("express")();
 
@@ -13,5 +14,5 @@ app.use("/api/v1", routes);
 const errorMiddleware = require("./src/middlewares/error.middleware");
 app.use(errorMiddleware);
 
-const {port} = require("./src/configs/app.config");
+const { port } = require("./src/configs/app.config");
 app.listen(port, () => console.log(`Server started on ${port} port`));
