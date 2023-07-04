@@ -25,7 +25,19 @@ export const HospitalURL = {
     getAllHospitals: `${server}/hospitals/`,
 };
 
+export const ProductionBatchURL = {
+    getBatchByHospitalId: `${server}/production-batches/hospitals/`,
+    getAllBatchesAndMedicines: `${server}/production-batches/hospitals/medicines`,
+    createProductionBatch: `${server}/production-batches/`,
+    deleteProductionBatch: `${server}/production-batches/`,
+};
+
+export const MedicineInBatchURL = {
+    getMedicineInBatchBySerialNumber: `${server}/medicine-in-batches/`,
+};
+
 export const MedicineURL = {
+    getOneMedicineById: `${server}/medicines/`,
     getAllMedicines: `${server}/medicines/`,
     createMedicine: `${server}/medicines/`,
     updateMedicine: `${server}/medicines/`,

@@ -1,6 +1,18 @@
 const MedicineService = require("../../services/medicine.service");
 const { apiError } = require("./error.controller");
 
+module.exports.getOneMedicineById = async (req, res) => {
+    const { idMedicine } = req.params;
+    try {
+        const medicine = await MedicineService.findById(idMedicine)
+        if (!medicine) return apiError(res, 404, "Лікарського засобу не знайдено");
+        res.status(200).json(medicine);
+    } catch (err) {
+        console.log("Error: ", err);
+        apiError(res, 500, err.message);
+    }
+};
+
 module.exports.getAllMedicines = async (req, res) => {
     try {
         const medicines = await MedicineService.findAll();

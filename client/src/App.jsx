@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Home from "./pages/Home";
+import Home from "./pages/main/Home";
 import Login from "./pages/auth/Login";
 import Profile from "./pages/user/Profile";
 import Registration from "./pages/auth/Registration";

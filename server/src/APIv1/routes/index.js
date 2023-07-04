@@ -12,6 +12,12 @@ router.use("/addresses", AddressRouter);
 const HospitalRouter = require("./hospital.router");
 router.use("/hospitals", HospitalRouter);
 
+const ProductionBatchRouter = require("./productionBatch.router");
+router.use("/production-batches", ProductionBatchRouter);
+
+const MedicineInBatchRouter = require("./medicineInBatch.router");
+router.use("/medicine-in-batches", MedicineInBatchRouter);
+
 const MedicineRouter = require("./medicine.router");
 router.use("/medicines", MedicineRouter);
 

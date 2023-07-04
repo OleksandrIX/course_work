@@ -21,11 +21,9 @@ MedicineInBacth.belongsTo(Medicine, { foreignKey: "medicineId", onDelete: "CASCA
 
 User.belongsTo(Address, { foreignKey: "addressId", onDelete: "CASCADE" });
 Hospital.belongsTo(Address, { foreignKey: "addressId", onDelete: "CASCADE" });
-MedicineInBacth.belongsTo(Address, { foreignKey: "produserAddressId", onDelete: "CASCADE" });
 
 Address.hasOne(User, { foreignKey: { name: "addressId" }, onDelete: "CASCADE" });
 Address.hasOne(Hospital, { foreignKey: { name: "addressId" }, onDelete: "CASCADE" });
-Address.hasOne(MedicineInBacth, { foreignKey: "produserAddressId", onDelete: "CASCADE" });
 
 const createAdmin = async () => {
     const admin = await User.findOne({ where: { username: "admin" } });

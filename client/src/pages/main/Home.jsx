@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { Box } from "@mui/material";
 
-import Auth from "../api/requests/auth.request";
-import Header from '../components/Header';
-import Loader from '../components/Loader';
+import Auth from "../../api/requests/auth.request";
+import Header from "../../components/Header";
+import Loader from "../../components/Loader";
+import AdminHomePage from "./AdminHomePage";
+import UserHomePage from "./UserHomePage";
 
 const styleBody = {
     display: "flex",
@@ -16,6 +17,7 @@ const styleBody = {
 const Home = () => {
     const navigate = useNavigate();
     const [isAuth, setIsAuth] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -26,14 +28,23 @@ const Home = () => {
             .finally(() => setIsLoading(false));
     }, [navigate]);
 
+    useEffect(() => {
+        if (isAuth)
+            Auth.checkAdmin()
+                .then(({ isAdmin }) => setIsAdmin(isAdmin))
+                .catch(() => { });
+    }, [isAuth]);
+
     if (isLoading) return (<Loader />);
 
     return (
         <Box sx={styleBody}>
             <Header isAuth={isAuth} />
-            <Box sx={{ margin: "10px", textAlign: "justify" }}>
-                
-            </Box>
+            {isAdmin ? (
+                <AdminHomePage isAuth={isAuth} />
+            ) : (
+                <UserHomePage isAuth={isAuth} />
+            )}
         </Box>
     );
 };
